@@ -1,4 +1,199 @@
-<div>
-  <h1 class="text-5xl text-red-500 font-bold">Welcome#index</h1>
-  <p class="text-muted">Rails 7 is ready </p>
+<div class="bg-[#F5F1E8]">
+  <!-- Hero -->
+  <section class="min-h-screen">
+    <div class="mx-auto flex min-h-screen max-w-6xl items-center gap-12 px-4 py-20">
+      <div class="max-w-3xl">
+
+        <p class="text-sm font-medium uppercase tracking-widest text-[#77736A]">
+          Ruby on Rails Developer
+        </p>
+
+        <h1 class="mt-4 font-serif text-6xl font-bold tracking-tight text-[#25231F]">
+          陳宏育
+        </h1>
+
+        <p class="mt-4 text-2xl text-[#77736A]">
+          Bamu
+        </p>
+
+        <p class="mt-8 max-w-2xl text-lg leading-8 text-[#55524B]">
+          I build web applications with Ruby on Rails.
+        </p>
+
+        <div class="mt-10 flex gap-4">
+          <%= link_to "View Projects",
+                      projects_path,
+                      class: "rounded-lg bg-[#25231F] px-6 py-3 font-medium text-[#F5F1E8] transition hover:bg-[#3A3731]" %>
+
+          <% github_link = @profile.links.find { |link| link.label.downcase == "github" } %>
+
+          <%= link_to github_link.url,
+                      target: "_blank",
+                      rel: "noopener noreferrer",
+                      class: "inline-flex items-center gap-2 rounded-lg border border-[#CFC9BB] bg-[#F5F1E8] px-6 py-3 font-medium text-[#4F4B43] transition hover:bg-[#EDE8DC]" do %>
+            <i class="fa-brands fa-github" aria-hidden="true"></i>
+            <span>GitHub</span>
+          <% end %>
+        </div>
+
+      </div>
+      <div class="flex-1">
+  <%= image_tag "home.jpg",
+                class: "w-full rounded-2xl object-cover" %>
+</div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="scroll-mt-24 bg-[#EEEAE0]">
+    <div class="mx-auto max-w-6xl px-4 py-32">
+
+      <h2 class="text-4xl font-semibold tracking-tight text-[#25231F]">
+        About
+      </h2>
+
+      <div class="mt-12 grid gap-12 md:grid-cols-2 md:gap-60">
+
+        <div class="max-w-xl text-[#55524B]">
+          <p class="text-lg leading-8">
+            我過去並非軟體業背景，後來開始投入 Web Development，從 Ruby 與 Ruby on Rails
+            開始自學。透過實際製作專案，我逐步熟悉從資料庫設計、後端邏輯到前端介面的完整開發流程。
+          </p>
+
+          <p class="mt-6 text-lg leading-8">
+            目前我以 Ruby on Rails 為主要開發工具，持續製作與完善自己的作品，並希望將這些自主學習與實作的經驗帶進實際的軟體開發團隊。除了 Ruby on Rails，我也願意學習其他程式語言與技術，面對不同的開發需求保持開放，持續學習。
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold text-[#25231F]">
+            Technologies
+          </h3>
+
+          <div class="mt-6 space-y-6 text-[#55524B]">
+
+            <div>
+              <h4 class="text-sm font-medium uppercase tracking-widest text-[#77736A]">
+                Backend
+              </h4>
+              <p class="mt-2">
+                Ruby · Ruby on Rails
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-sm font-medium uppercase tracking-widest text-[#77736A]">
+                Frontend
+              </h4>
+              <p class="mt-2">
+                HTML · CSS · JavaScript · Tailwind CSS
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-sm font-medium uppercase tracking-widest text-[#77736A]">
+                Database
+              </h4>
+              <p class="mt-2">
+                PostgreSQL
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-sm font-medium uppercase tracking-widest text-[#77736A]">
+                Tools
+              </h4>
+              <p class="mt-2">
+                Git · GitHub
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!--Projects-->
+  <section id="projects" class="min-h-screen pb-32">
+    <div class="mt-16 space-y-32">
+
+      <div class="mb-20 text-center">
+        <h2 class="text-4xl font-semibold tracking-tight text-[#25231F]">
+          My Projects
+        </h2>
+
+        <p class="mt-4 text-lg text-[#77736A]">
+          Projects I've built while learning and exploring web development.
+        </p>
+      </div>
+
+      <% @projects.each_with_index do |project, index| %>
+
+        <div class="<%= index.even? ?
+                        'mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 rounded-2xl bg-[#EEEAE0] px-20 py-12 md:grid-cols-2 xl:grid-cols-[640px_minmax(0,1fr)] xl:gap-12' :
+                        'mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 rounded-2xl bg-[#EEEAE0] px-20 py-12 md:grid-cols-2 xl:grid-cols-[minmax(0,1fr)_640px] xl:gap-12' %>">
+
+          <div class="<%= index.even? ? 'order-1 md:order-1' : 'order-1 md:order-2' %>">
+            <% image = project.project_images.order(:position).first %>
+
+            <% if image&.image&.attached? %>
+              <%= link_to project_path(project) do %>
+                <%= image_tag image.image,
+                              class: "w-full max-w-none rounded-xl object-cover" %>
+              <% end %>
+            <% end %>
+          </div>
+
+          <div class="<%= index.even? ? 'order-2 md:order-2 xl:pl-8' : 'order-2 md:order-1 xl:pl-8' %>">
+            <%= link_to project_path(project) do %>
+              <h3 class="text-2xl font-semibold text-[#25231F] hover:underline">
+                <%= project.name %>
+              </h3>
+          <% end %>
+
+          <p class="mt-2 text-lg text-[#77736A]">
+            <%= project.summary %>
+          </p>
+
+          <div class="mt-6 flex flex-wrap gap-2">
+            <% project.skills.each do |skill| %>
+              <%= render "shared/badge", text: skill.name %>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+
+      <% end %>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="bg-[#EEEAE0]">
+    <div class="mx-auto flex min-h-screen max-w-6xl flex-col items-center gap-12 px-4 py-20 md:flex-row">
+
+      <div class="mx-auto max-w-5xl rounded-2xl bg-[#DED9CD] px-6 py-20 text-center md:px-16">
+
+        <h2 class="text-4xl font-semibold tracking-tight text-[#4F4B43]">
+          Let's Work Together
+        </h2>
+
+        <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-[#77736A]">
+          如果你對我的作品或經歷有興趣，歡迎與我聯絡。
+        </p>
+
+
+        <%= link_to "Contact Me",
+                    contact_path,
+                    class: "mt-8 inline-block rounded-lg bg-[#4F4B43] px-6 py-3 font-medium text-[#F5F1E8] transition hover:bg-[#55524B]" %>
+
+      </div>
+
+    </div>
+  </section>
+
+  </div>
 </div>

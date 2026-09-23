@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resource :contact, only: :show
+
   resources :projects, only: [ :index, :show ]
 
   devise_for :users
@@ -7,6 +9,8 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   root "welcome#index"
+
+
 
   namespace :admin do
     resource :profile

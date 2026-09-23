@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    flash[:notice] = "早安，你好！"
+    @profile = Profile.first
+    @projects = Project.all
   end
 end

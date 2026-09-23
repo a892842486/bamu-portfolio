@@ -1,11 +1,19 @@
-<div class="bg-gray-50 p-8">
+<div class="bg-[#F5F1E8] px-4 py-20">
   <div class="mx-auto max-w-6xl">
+    <div class="mb-20 text-center">
+      <h1 class="text-5xl font-semibold tracking-tight text-[#25231F]">
+        My Projects
+      </h1>
 
-    <h1 class="mb-8 text-3xl font-bold">Projects</h1>
+      <p class="mt-4 text-lg text-[#77736A]">
+        Projects I've built while learning and exploring web development.
+      </p>
+    </div>
+
 
     <div class="grid gap-6 md:grid-cols-2">
       <% @projects.each do |project| %>
-        <div class="rounded-xl bg-white p-6 shadow ring-1 ring-gray-200 transition-shadow hover:shadow-md">
+        <div class="rounded-xl bg-[#EEEAE0] p-12">
           <h2 class="text-xl font-semibold">
             <%= link_to project.name, project_path(project), class: "hover:underline" %>
           </h2>
@@ -22,7 +30,7 @@
 
           <% if cover_image&.image&.attached? %>
             <%= link_to project_path(project) do %>
-              <%= image_tag cover_image.image, class: "mt-4 w-full rounded-lg" %>
+              <%= image_tag cover_image.image, class: "mt-6 w-full rounded-lg" %>
             <% end %>
           <% end %>
         </div>

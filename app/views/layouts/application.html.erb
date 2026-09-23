@@ -24,15 +24,27 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-gray-50">
+  <body class="bg-[#F5F1E8]">
     <%= render "shared/navbar" %>
 
-    <main class="container mx-auto mt-4">
+    <main>
       <%= render "shared/flash" %>
 
       <%= yield %>
     </main>
 
     <%= render "shared/footer" %>
+
+    <button
+      type="button"
+      data-controller="back-to-top"
+      data-action="click->back-to-top#scrollToTop"
+                  class="fixed bottom-6 right-6 hidden h-14 w-14 items-center justify-center
+                  rounded-xl bg-[#4F4B43]/70 text-3xl text-[#F5F1E8] shadow-md transition hover:bg-[#4F4B43] md:bottom-10 md:right-10"
+      aria-label="Back to top"
+        >
+          ↑
+     </button>
+
   </body>
 </html>
