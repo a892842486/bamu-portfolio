@@ -29,6 +29,7 @@ class Admin::ProfilesController < ApplicationController
     end
 
     def edit
+        @profile.links.build if @profile.links.empty?
     end
 
     def update
@@ -56,7 +57,8 @@ class Admin::ProfilesController < ApplicationController
             :display_name,
             :job_title,
             :introduction,
-            :contact_email
+            :contact_email,
+            links_attributes: [ :id, :label, :url, :_destroy ]
         )
     end
 end

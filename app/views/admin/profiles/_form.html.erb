@@ -20,6 +20,20 @@
   </div>
 
   <div>
+    <%= form.fields_for :links do |link_form| %>
+      <div>
+        <%= link_form.label :label %>
+        <%= link_form.text_field :label %>
+      </div>
+
+      <div>
+        <%= link_form.label :url %>
+        <%= link_form.url_field :url %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
