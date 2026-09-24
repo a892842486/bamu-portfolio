@@ -1,5 +1,5 @@
 <div class="bg-[#F5F1E8] px-4 py-20">
-  <div class="mx-auto max-w-6xl">
+  <div class="mx-auto max-w-5xl">
     <div class="mb-20 text-center">
       <h1 class="text-5xl font-semibold tracking-tight text-[#25231F]">
         My Projects
@@ -10,32 +10,40 @@
       </p>
     </div>
 
-
-    <div class="grid gap-6 md:grid-cols-2">
+    <div class="space-y-16">
       <% @projects.each do |project| %>
-        <div class="rounded-xl bg-[#EEEAE0] p-12">
-          <h2 class="text-xl font-semibold">
-            <%= link_to project.name, project_path(project), class: "hover:underline" %>
-          </h2>
-
-          <p class="mt-2 text-gray-600"><%= project.summary %></p>
-
-          <div class="mt-3 flex flex-wrap gap-2">
-            <% project.skills.each do |skill| %>
-              <%= render "shared/badge", text: skill.name %>
-            <% end %>
-          </div>
+        <article class="overflow-hidden rounded-2xl bg-[#EEEAE0]">
 
           <% cover_image = project.project_images.order(:created_at).first %>
 
           <% if cover_image&.image&.attached? %>
-            <%= link_to project_path(project) do %>
-              <%= image_tag cover_image.image, class: "mt-6 w-full rounded-lg" %>
+            <%= link_to project_path(project),
+                        class: "block bg-[#DED9CD] p-4" do %>
+              <%= image_tag cover_image.image,
+                            class: "mx-auto max-h-[38vh] w-auto rounded-xl object-contain" %>
             <% end %>
           <% end %>
-        </div>
+
+          <div class="p-8 md:p-10">
+            <h2 class="text-2xl font-semibold text-[#4F4B43]">
+              <%= link_to project.name,
+                          project_path(project),
+                          class: "transition hover:text-[#77736A]" %>
+            </h2>
+
+            <p class="mt-3 text-lg text-[#77736A]">
+              <%= project.summary %>
+            </p>
+
+            <div class="mt-5 flex flex-wrap gap-2">
+              <% project.skills.each do |skill| %>
+                <%= render "shared/badge", text: skill.name %>
+              <% end %>
+            </div>
+          </div>
+
+        </article>
       <% end %>
     </div>
-
   </div>
 </div>

@@ -1,16 +1,39 @@
 <% if @skill.errors.any? %>
-  <ul>
-    <% @skill.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
+  <div class="mb-8 rounded-xl bg-[#DED9CD] p-5">
+    <h2 class="font-medium text-[#4F4B43]">
+      Please check the following:
+    </h2>
+
+    <ul class="mt-3 list-disc space-y-1 pl-5 text-sm text-[#77736A]">
+      <% @skill.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
 <%= form_with model: [:admin, @skill] do |form| %>
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <section class="rounded-2xl bg-[#EEEAE0] p-8">
 
-  <%= form.submit %>
+    <h2 class="text-xl font-semibold text-[#4F4B43]">
+      Skill Information
+    </h2>
+
+    <div class="mt-6">
+      <%= form.label :name,
+                     class: "block text-sm font-medium text-[#4F4B43]" %>
+
+      <%= form.text_field :name,
+                          class: "mt-2 w-full rounded-lg border border-[#CFC9BB] bg-[#F5F1E8] px-4 py-3 text-[#4F4B43] outline-none transition focus:border-[#77736A]" %>
+    </div>
+
+    <div class="mt-8 flex justify-end gap-3">
+      <%= link_to "Cancel",
+                  admin_skills_path,
+                  class: "rounded-lg border border-[#CFC9BB] px-5 py-3 font-medium text-[#77736A] transition hover:bg-[#EEEAE0]" %>
+
+      <%= form.submit class: "rounded-lg bg-[#4F4B43] px-6 py-3 font-medium text-[#F5F1E8] transition hover:bg-[#55524B]" %>
+    </div>
+
+  </section>
 <% end %>

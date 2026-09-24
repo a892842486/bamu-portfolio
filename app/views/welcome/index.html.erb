@@ -12,28 +12,18 @@
           陳宏育
         </h1>
 
-        <p class="mt-4 text-2xl text-[#77736A]">
-          Bamu
-        </p>
-
         <p class="mt-8 max-w-2xl text-lg leading-8 text-[#55524B]">
-          I build web applications with Ruby on Rails.
+          I build web applications with a focus on clean and practical solutions.
         </p>
 
         <div class="mt-10 flex gap-4">
+          <%= link_to "Contact Me",
+                      contact_path,
+                      class: "rounded-lg bg-[#4F4B43] px-6 py-3 font-medium text-[#F5F1E8] transition hover:bg-[#55524B]" %>
+
           <%= link_to "View Projects",
                       projects_path,
-                      class: "rounded-lg bg-[#25231F] px-6 py-3 font-medium text-[#F5F1E8] transition hover:bg-[#3A3731]" %>
-
-          <% github_link = @profile.links.find { |link| link.label.downcase == "github" } %>
-
-          <%= link_to github_link.url,
-                      target: "_blank",
-                      rel: "noopener noreferrer",
-                      class: "inline-flex items-center gap-2 rounded-lg border border-[#CFC9BB] bg-[#F5F1E8] px-6 py-3 font-medium text-[#4F4B43] transition hover:bg-[#EDE8DC]" do %>
-            <i class="fa-brands fa-github" aria-hidden="true"></i>
-            <span>GitHub</span>
-          <% end %>
+                      class: "rounded-lg border border-[#CFC9BB] bg-[#F5F1E8] px-6 py-3 font-medium text-[#4F4B43] transition hover:bg-[#EDE8DC]" %>
         </div>
 
       </div>
@@ -173,7 +163,7 @@
 
   <!-- Contact -->
   <section id="contact" class="bg-[#EEEAE0]">
-    <div class="mx-auto flex min-h-screen max-w-6xl flex-col items-center gap-12 px-4 py-20 md:flex-row">
+    <div class="mx-auto flex min-h-[calc(100vh-85px)] max-w-6xl items-center justify-center px-4">
 
       <div class="mx-auto max-w-5xl rounded-2xl bg-[#DED9CD] px-6 py-20 text-center md:px-16">
 

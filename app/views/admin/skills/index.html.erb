@@ -1,20 +1,74 @@
-<h1>Skills</h1>
-<%= link_to "New Skill", new_admin_skill_path %>
-
-<div id="skills" data-controller="skill-sort">
-  <% @skills.each do |skill| %>
-    <div class="flex items-center gap-2">
-      <p data-skill-id="<%= skill.id %>"
-        draggable="true"
-        data-action="dragstart->skill-sort#dragstart
-                    dragover->skill-sort#dragover
-                    drop->skill-sort#drop">
-        <%= skill.name %>
+<div class="mx-auto max-w-4xl px-6 py-16">
+  <div class="mb-10 flex items-end justify-between">
+    <div>
+      <p class="text-sm font-medium tracking-widest text-[#77736A] uppercase">
+        Admin
       </p>
 
-      <%= button_to "Delete",
-                    admin_skill_path(skill),
-                    method: :delete %>
+      <div class="flex items-baseline gap-5">
+        <h1 class="text-4xl font-semibold tracking-tight text-[#4F4B43]">
+          Skills
+        </h1>
+
+        <div class="flex items-center gap-4 text-sm">
+          <%= link_to "Projects",
+                      admin_projects_path,
+                      class: "text-[#77736A] transition hover:text-[#4F4B43]" %>
+
+          <%= link_to "Profile",
+                      admin_profile_path,
+                      class: "text-[#77736A] transition hover:text-[#4F4B43]" %>
+
+          <%= link_to "Skills",
+                      admin_skills_path,
+                      class: "text-[#77736A] transition hover:text-[#4F4B43]" %>
+        </div>
       </div>
-  <% end %>
+
+      <p class="mt-3 text-[#77736A]">
+        Manage the skills displayed in your portfolio.
+      </p>
+    </div>
+
+    <%= link_to "New Skill",
+                new_admin_skill_path,
+                class: "rounded-lg bg-[#4F4B43] px-5 py-3 font-medium text-[#F5F1E8] transition hover:bg-[#55524B]" %>
+  </div>
+
+
+  <div id="skills"
+       data-controller="skill-sort"
+       class="space-y-3">
+
+    <% @skills.each do |skill| %>
+      <div data-skill-id="<%= skill.id %>"
+          draggable="true"
+          data-action="dragstart->skill-sort#dragstart
+                      dragover->skill-sort#dragover
+                      drop->skill-sort#drop"
+          class="flex cursor-grab items-center justify-between rounded-xl bg-[#EEEAE0] p-5 active:cursor-grabbing">
+
+        <div class="flex items-center gap-3">
+          <i class="fa-solid fa-grip-vertical text-[#77736A]"
+            aria-hidden="true"></i>
+
+          <p class="font-medium text-[#4F4B43]">
+            <%= skill.name %>
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <%= link_to "Edit",
+                      edit_admin_skill_path(skill),
+                      class: "rounded-lg border border-[#CFC9BB] px-4 py-2 text-sm font-medium text-[#4F4B43] transition hover:bg-[#DED9CD]" %>
+
+          <%= button_to "Delete",
+                        admin_skill_path(skill),
+                        method: :delete,
+                        class: "rounded-lg border border-[#CFC9BB] px-4 py-2 text-sm font-medium text-[#77736A] transition hover:bg-[#DED9CD]" %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
 </div>

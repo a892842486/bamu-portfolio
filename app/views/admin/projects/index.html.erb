@@ -1,29 +1,99 @@
-<h1>Projects</h1>
-
-<%= link_to "New Project", new_admin_project_path %>
-
-<div>
-  <% @projects.each do |project| %>
+<div class="mx-auto max-w-4xl px-6 py-16">
+  <div class="mb-12 flex items-end justify-between">
     <div>
-      <h2><%= project.name %></h2>
-      <p><%= project.summary %></p>
-      <p><%= project.description %></p>
+      <p class="text-sm font-medium tracking-widest text-[#77736A] uppercase">
+        Admin
+      </p>
 
-      <% cover_image = project.project_images.order(:created_at).first %>
+      <div class="flex items-baseline gap-5">
+        <h1 class="text-4xl font-semibold tracking-tight text-[#4F4B43]">
+          Projects
+        </h1>
 
-      <% if cover_image&.image&.attached? %>
-        <%= image_tag cover_image.image, class: "mt-4 w-full rounded-lg" %>
-      <% end %>
+        <div class="flex items-center gap-4 text-sm">
+          <%= link_to "Projects",
+                      admin_projects_path,
+                      class: "text-[#77736A] transition hover:text-[#4F4B43]" %>
 
-      <% project.links.each do |link| %>
-        <%= link_to link.label, link.url %>
-      <% end %>
+          <%= link_to "Profile",
+                      admin_profile_path,
+                      class: "text-[#77736A] transition hover:text-[#4F4B43]" %>
 
-      <%= link_to "Edit", edit_admin_project_path(project) %>
-
-      <%= button_to "Delete",
-                    admin_project_path(project),
-                    method: :delete %>
+          <%= link_to "Skills",
+                      admin_skills_path,
+                      class: "text-[#77736A] transition hover:text-[#4F4B43]" %>
+        </div>
       </div>
-  <% end %>
+
+      <p class="mt-3 text-[#77736A]">
+        Manage the projects displayed in your portfolio.
+      </p>
+    </div>
+
+    <%= link_to "New Project",
+                new_admin_project_path,
+                class: "rounded-lg bg-[#4F4B43] px-5 py-3 font-medium text-[#F5F1E8] transition hover:bg-[#55524B]" %>
+  </div>
+
+  <div class="space-y-8">
+    <% @projects.each do |project| %>
+      <div class="overflow-hidden rounded-2xl bg-[#EEEAE0]">
+        <% cover_image = project.project_images.order(:created_at).first %>
+
+        <% if cover_image&.image&.attached? %>
+          <div class="flex max-h-[500px] items-center justify-center bg-[#DED9CD] p-4">
+            <%= image_tag cover_image.image,
+                          class: "max-h-[500px] max-w-full rounded-lg object-contain" %>
+          </div>
+        <% end %>
+
+        <div class="p-8">
+          <h2 class="text-2xl font-semibold text-[#4F4B43]">
+            <%= project.name %>
+          </h2>
+
+          <p class="mt-2 text-lg text-[#77736A]">
+            <%= project.summary %>
+          </p>
+
+          <p class="mt-5 max-w-3xl leading-7 text-[#77736A]">
+            <%= project.description %>
+          </p>
+
+          <% if project.skills.any? %>
+            <div class="mt-6 flex flex-wrap gap-2">
+              <% project.skills.each do |skill| %>
+                <span class="rounded-full bg-[#DED9CD] px-3 py-1 text-sm text-[#4F4B43]">
+                  <%= skill.name %>
+                </span>
+              <% end %>
+            </div>
+          <% end %>
+
+          <% if project.links.any? %>
+            <div class="mt-6 flex flex-wrap gap-4">
+              <% project.links.each do |link| %>
+                <%= link_to link.label,
+                            link.url,
+                            target: "_blank",
+                            rel: "noopener noreferrer",
+                            class: "text-sm font-medium text-[#4F4B43] underline decoration-[#BDB7AA] underline-offset-4 transition hover:text-[#77736A]" %>
+              <% end %>
+            </div>
+          <% end %>
+
+          <div class="mt-8 flex gap-3">
+            <%= link_to "Edit",
+                        edit_admin_project_path(project),
+                        class: "rounded-lg bg-[#4F4B43] px-5 py-2.5 font-medium text-[#F5F1E8] transition hover:bg-[#55524B]" %>
+
+            <%= button_to "Delete",
+                          admin_project_path(project),
+                          method: :delete,
+                          class: "rounded-lg border border-[#CFC9BB] px-5 py-2.5 font-medium text-[#77736A] transition hover:bg-[#DED9CD]" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

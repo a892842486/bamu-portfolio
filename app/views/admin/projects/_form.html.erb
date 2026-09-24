@@ -1,88 +1,201 @@
 <%= form_with model: [:admin, project] do |form| %>
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <div class="space-y-8">
 
-  <div>
-    <%= form.label :summary %>
-    <%= form.text_field :summary %>
-  </div>
+    <!-- Basic Information -->
+    <section class="rounded-2xl bg-[#EEEAE0] p-8">
+      <h2 class="text-xl font-semibold text-[#4F4B43]">
+        Basic Information
+      </h2>
 
-  <div>
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.label :skills %>
-    <%= form.collection_check_boxes :skill_ids, Skill.order(:position), :id, :name %>
-  </div>
-
-  <div>
-    <%= form.fields_for :links do |link_form| %>
-      <%= link_form.hidden_field :id %>
-
-      <%= link_form.label :label %>
-      <%= link_form.text_field :label %>
-
-      <%= link_form.label :url %>
-      <%= link_form.text_field :url %>
-
-      <%= link_form.check_box :_destroy %>
-      <%= link_form.label :_destroy, "Delete" %>
-    <% end %>
-  </div>
-
-  <div data-controller="project-images">
-
-    <div data-project-images-target="list">
-      <%= form.fields_for :project_images do |image_form| %>
+      <div class="mt-6 space-y-6">
         <div>
-          <%= image_form.hidden_field :id %>
+          <%= form.label :name,
+                         class: "block text-sm font-medium text-[#4F4B43]" %>
 
-          <% if image_form.object.persisted? && image_form.object.image.attached? %>
-            <%= image_tag image_form.object.image, width: 300 %>
-          <% end %>
-
-          <%= image_form.label :caption, "Caption" %>
-          <%= image_form.text_field :caption %>
-
-          <%= image_form.label :image, "Image" %>
-          <%= image_form.file_field :image %>
-
-          <%= image_form.check_box :_destroy %>
-          <%= image_form.label :_destroy, "Delete" %>
+          <%= form.text_field :name,
+                              class: "mt-2 w-full rounded-lg border border-[#CFC9BB] bg-[#F5F1E8] px-4 py-3 text-[#4F4B43] outline-none transition focus:border-[#77736A]" %>
         </div>
-      <% end %>
+
+        <div>
+          <%= form.label :summary,
+                         class: "block text-sm font-medium text-[#4F4B43]" %>
+
+          <%= form.text_field :summary,
+                              class: "mt-2 w-full rounded-lg border border-[#CFC9BB] bg-[#F5F1E8] px-4 py-3 text-[#4F4B43] outline-none transition focus:border-[#77736A]" %>
+        </div>
+
+        <div>
+          <%= form.label :description,
+                         class: "block text-sm font-medium text-[#4F4B43]" %>
+
+          <%= form.text_area :description,
+                             rows: 6,
+                             class: "mt-2 w-full rounded-lg border border-[#CFC9BB] bg-[#F5F1E8] px-4 py-3 leading-7 text-[#4F4B43] outline-none transition focus:border-[#77736A]" %>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Skills -->
+    <section class="rounded-2xl bg-[#EEEAE0] p-8">
+      <h2 class="text-xl font-semibold text-[#4F4B43]">
+        Skills
+      </h2>
+
+      <div class="mt-6 flex flex-wrap gap-3">
+        <%= form.collection_check_boxes :skill_ids,
+                                        Skill.order(:position),
+                                        :id,
+                                        :name do |box| %>
+          <label class="flex cursor-pointer items-center gap-2 rounded-full bg-[#DED9CD] px-4 py-2 text-sm text-[#4F4B43] transition hover:bg-[#D5D0C4]">
+            <%= box.check_box class: "accent-[#4F4B43]" %>
+            <%= box.text %>
+          </label>
+        <% end %>
+      </div>
+    </section>
+
+
+    <!-- Links -->
+    <section class="rounded-2xl bg-[#EEEAE0] p-8">
+      <h2 class="text-xl font-semibold text-[#4F4B43]">
+        Links
+      </h2>
+
+      <div class="mt-6 space-y-6">
+        <%= form.fields_for :links do |link_form| %>
+          <div class="rounded-xl bg-[#DED9CD] p-6">
+            <%= link_form.hidden_field :id %>
+
+            <div class="space-y-5">
+              <div>
+                <%= link_form.label :label,
+                                   class: "block text-sm font-medium text-[#4F4B43]" %>
+
+                <%= link_form.text_field :label,
+                                         class: "mt-2 w-full rounded-lg border border-[#CFC9BB] bg-[#F5F1E8] px-4 py-3 text-[#4F4B43] outline-none focus:border-[#77736A]" %>
+              </div>
+
+              <div>
+                <%= link_form.label :url,
+                                   class: "block text-sm font-medium text-[#4F4B43]" %>
+
+                <%= link_form.text_field :url,
+                                         class: "mt-2 w-full rounded-lg border border-[#CFC9BB] bg-[#F5F1E8] px-4 py-3 text-[#4F4B43] outline-none focus:border-[#77736A]" %>
+              </div>
+
+              <label class="flex items-center gap-2 text-sm text-[#77736A]">
+                <%= link_form.check_box :_destroy,
+                                        class: "accent-[#4F4B43]" %>
+                Delete
+              </label>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </section>
+
+
+    <!-- Images -->
+    <section data-controller="project-images"
+             class="rounded-2xl bg-[#EEEAE0] p-8">
+
+      <h2 class="text-xl font-semibold text-[#4F4B43]">
+        Images
+      </h2>
+
+      <div data-project-images-target="list"
+           class="mt-6 space-y-6">
+
+        <%= form.fields_for :project_images do |image_form| %>
+          <div class="rounded-xl bg-[#DED9CD] p-6">
+            <%= image_form.hidden_field :id %>
+
+            <% if image_form.object.persisted? && image_form.object.image.attached? %>
+              <div class="mb-5 flex max-h-[400px] items-center justify-center overflow-hidden rounded-xl bg-[#DED9CD] p-4">
+                <%= image_tag image_form.object.image,
+                              class: "max-h-[400px] max-w-full rounded-lg object-contain" %>
+              </div>
+            <% end %>
+
+            <div class="space-y-5">
+              <div>
+                <%= image_form.label :caption,
+                                    "Caption",
+                                    class: "block text-sm font-medium text-[#4F4B43]" %>
+
+                <%= image_form.text_field :caption,
+                                          class: "mt-2 w-full rounded-lg border border-[#CFC9BB] bg-[#F5F1E8] px-4 py-3 text-[#4F4B43] outline-none focus:border-[#77736A]" %>
+              </div>
+
+              <div>
+                <%= image_form.label :image,
+                                    "Image",
+                                    class: "block text-sm font-medium text-[#4F4B43]" %>
+
+                <%= image_form.file_field :image,
+                                          class: "mt-2 block w-full text-sm text-[#77736A]" %>
+              </div>
+
+              <label class="flex items-center gap-2 text-sm text-[#77736A]">
+                <%= image_form.check_box :_destroy,
+                                         class: "accent-[#4F4B43]" %>
+                Delete
+              </label>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+
+      <template data-project-images-target="template">
+        <%= form.fields_for :project_images,
+                            ProjectImage.new,
+                            child_index: "NEW_RECORD" do |image_form| %>
+
+          <div class="rounded-xl bg-[#DED9CD] p-6">
+            <%= image_form.hidden_field :id %>
+
+            <div class="space-y-5">
+              <div>
+                <%= image_form.label :caption,
+                                    "Caption",
+                                    class: "block text-sm font-medium text-[#4F4B43]" %>
+
+                <%= image_form.text_field :caption,
+                                          class: "mt-2 w-full rounded-lg border border-[#CFC9BB] bg-[#F5F1E8] px-4 py-3 text-[#4F4B43] outline-none focus:border-[#77736A]" %>
+              </div>
+
+              <div>
+                <%= image_form.label :image,
+                                    "Image",
+                                    class: "block text-sm font-medium text-[#4F4B43]" %>
+
+                <%= image_form.file_field :image,
+                                          class: "mt-2 block w-full text-sm text-[#77736A]" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </template>
+
+      <button type="button"
+              id="add-project-image"
+              data-action="click->project-images#add"
+              class="mt-6 rounded-lg border border-[#CFC9BB] px-5 py-2.5 font-medium text-[#4F4B43] transition hover:bg-[#DED9CD]">
+        Add Project Image
+      </button>
+    </section>
+
+
+    <!-- Actions -->
+    <div class="flex justify-end gap-3">
+      <%= link_to "Cancel",
+                  admin_projects_path,
+                  class: "rounded-lg border border-[#CFC9BB] px-5 py-3 font-medium text-[#77736A] transition hover:bg-[#EEEAE0]" %>
+
+      <%= form.submit class: "rounded-lg bg-[#4F4B43] px-6 py-3 font-medium text-[#F5F1E8] transition hover:bg-[#55524B]" %>
     </div>
 
-
-    <template data-project-images-target="template">
-      <%= form.fields_for :project_images, ProjectImage.new, child_index: "NEW_RECORD" do |image_form| %>
-        <div>
-          <%= image_form.hidden_field :id %>
-
-          <%= image_form.label :caption, "Caption" %>
-          <%= image_form.text_field :caption %>
-
-          <%= image_form.label :image, "Image" %>
-          <%= image_form.file_field :image %>
-
-          <%= image_form.check_box :_destroy %>
-          <%= image_form.label :_destroy, "Delete" %>
-        </div>
-      <% end %>
-    </template>
-
-    <button type="button"
-            id="add-project-image"
-            data-action="click->project-images#add">
-      Add Project Image
-    </button>
-
   </div>
-
-  <%= form.submit %>
-  
 <% end %>

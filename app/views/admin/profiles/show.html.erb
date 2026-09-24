@@ -1,28 +1,122 @@
-<h1>Profile</h1>
+<div class="mx-auto max-w-4xl px-6 py-16">
+  <div class="mb-10 flex items-end justify-between">
+    <div>
+      <p class="text-sm font-medium tracking-widest text-[#77736A] uppercase">
+        Admin
+      </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @profile.display_name %>
-</p>
+      <div class="flex items-baseline gap-5">
+        <h1 class="text-4xl font-semibold tracking-tight text-[#4F4B43]">
+          Profile
+        </h1>
 
-<p>
-  <strong>Job Title:</strong>
-  <%= @profile.job_title %>
-</p>
+        <div class="flex items-center gap-4 text-sm">
+          <%= link_to "Projects",
+                      admin_projects_path,
+                      class: "text-[#77736A] transition hover:text-[#4F4B43]" %>
 
-<p>
-  <strong>Introduction:</strong>
-  <%= @profile.introduction %>
-</p>
+          <%= link_to "Profile",
+                      admin_profile_path,
+                      class: "text-[#77736A] transition hover:text-[#4F4B43]" %>
 
-<p>
-  <strong>Email:</strong>
-  <%= @profile.contact_email %>
-</p>
+          <%= link_to "Skills",
+                      admin_skills_path,
+                      class: "text-[#77736A] transition hover:text-[#4F4B43]" %>
+        </div>
+      </div>
 
-<%= link_to "Edit Profile", edit_admin_profile_path %>
+      <p class="mt-3 text-[#77736A]">
+        Manage your personal information and portfolio links.
+      </p>
+    </div>
 
-<%= button_to "Delete Profile",
-              admin_profile_path,
-              method: :delete,
-              data: { turbo_confirm: "Are you sure?" } %>
+    <%= link_to "Edit Profile",
+                edit_admin_profile_path,
+                class: "rounded-lg bg-[#4F4B43] px-5 py-3 font-medium text-[#F5F1E8] transition hover:bg-[#55524B]" %>
+  </div>
+
+  <div class="space-y-8">
+
+    <!-- Profile Information -->
+    <section class="rounded-2xl bg-[#EEEAE0] p-8">
+      <h2 class="text-xl font-semibold text-[#4F4B43]">
+        Profile Information
+      </h2>
+
+      <div class="mt-6 space-y-6">
+
+        <div>
+          <p class="text-sm font-medium text-[#77736A]">
+            Name
+          </p>
+          <p class="mt-1 text-lg text-[#4F4B43]">
+            <%= @profile.display_name %>
+          </p>
+        </div>
+
+        <div>
+          <p class="text-sm font-medium text-[#77736A]">
+            Job Title
+          </p>
+          <p class="mt-1 text-lg text-[#4F4B43]">
+            <%= @profile.job_title %>
+          </p>
+        </div>
+
+        <div>
+          <p class="text-sm font-medium text-[#77736A]">
+            Introduction
+          </p>
+          <p class="mt-2 leading-7 text-[#4F4B43]">
+            <%= @profile.introduction %>
+          </p>
+        </div>
+
+        <div>
+          <p class="text-sm font-medium text-[#77736A]">
+            Email
+          </p>
+          <p class="mt-1 text-lg text-[#4F4B43]">
+            <%= @profile.contact_email %>
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- Links -->
+    <section class="rounded-2xl bg-[#EEEAE0] p-8">
+      <h2 class="text-xl font-semibold text-[#4F4B43]">
+        Links
+      </h2>
+
+      <div class="mt-6 space-y-4">
+        <% @profile.links.each do |link| %>
+          <div class="flex items-center justify-between rounded-xl bg-[#DED9CD] p-5">
+            <div>
+              <p class="font-medium text-[#4F4B43]">
+                <%= link.label %>
+              </p>
+
+              <p class="mt-1 text-sm text-[#77736A]">
+                <%= link.url %>
+              </p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </section>
+
+
+    <!-- Actions -->
+    <div class="flex justify-end">
+      <%= button_to "Delete Profile",
+                    admin_profile_path,
+                    method: :delete,
+                    data: { turbo_confirm: "Are you sure?" },
+                    class: "rounded-lg border border-[#CFC9BB] px-5 py-3 font-medium text-[#77736A] transition hover:bg-[#DED9CD]" %>
+    </div>
+
+  </div>
+</div>
