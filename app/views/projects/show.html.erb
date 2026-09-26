@@ -6,26 +6,41 @@
         <%= @project.name %>
       </h1>
 
-      <p class="mt-5 text-xl leading-8 text-[#77736A]">
+      <p class="mt-5 text-lg leading-8 text-[#77736A]">
         <%= @project.summary %>
       </p>
     </div>
 
-    <h2 class="mt-10 text-2xl font-semibold text-[#4F4B43]">About this project</h2>
+    <h2 class="mt-14 flex items-center gap-3 text-2xl font-semibold text-[#4F4B43]">
+      <span class="relative inline-block h-2.5 w-2 rounded-[100%_0_100%_0] border border-[#7B806F]">
+        <span class="absolute left-1/2 top-1/2 h-px w-1 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-[#7B806F]"></span>
+      </span>
+      About this project
+    </h2>
 
-    <p class="mt-8 max-w-3xl leading-7 text-[#55524B]">
+    <div class="mt-8 max-w-3xl leading-7 text-[#77736A]">
       <%= simple_format(@project.description) %>
-    </p>
+    </div>
 
-    <h2 class="mt-10 text-2xl font-semibold text-[#4F4B43]">Skills</h2>
+    <h2 class="mt-10 flex items-center gap-3 text-2xl font-semibold text-[#4F4B43]">
+      <span class="relative inline-block h-2.5 w-2 rounded-[100%_0_100%_0] border border-[#7B806F]">
+        <span class="absolute left-1/2 top-1/2 h-px w-1 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-[#7B806F]"></span>
+      </span>
+      Skills
+    </h2>
 
     <div class="mt-3 flex flex-wrap gap-2">
-      <% @project.skills.each do |skill| %>
+      <% @project.skills.order(:position).each do |skill| %>
         <%= render "shared/badge", text: skill.name %>
       <% end %>
     </div>
 
-    <h2 class="mt-10 text-2xl font-semibold text-[#4F4B43]">Links</h2>
+    <h2 class="mt-10 flex items-center gap-3 text-2xl font-semibold text-[#4F4B43]">
+      <span class="relative inline-block h-2.5 w-2 rounded-[100%_0_100%_0] border border-[#7B806F]">
+        <span class="absolute left-1/2 top-1/2 h-px w-1 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-[#7B806F]"></span>
+      </span>
+      Links
+    </h2>
 
     <div class="mt-3 mb-8 flex flex-wrap gap-2">
       <% @project.links.each do |link| %>
@@ -34,7 +49,12 @@
     </div>
 
     <% if @project.project_images.any? %>
-      <h2 class="mt-10 text-2xl font-semibold text-[#4F4B43]">Project Screenshots</h2>
+      <h2 class="mt-10 flex items-center gap-3 text-2xl font-semibold text-[#4F4B43]">
+        <span class="relative inline-block h-2.5 w-2 rounded-[100%_0_100%_0] border border-[#7B806F]">
+          <span class="absolute left-1/2 top-1/2 h-px w-1 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-[#7B806F]"></span>
+        </span>
+        Project Screenshots
+      </h2>
 
       <div class="mt-6 space-y-8">
         <% @project.project_images.order(:created_at).each do |project_image| %>
