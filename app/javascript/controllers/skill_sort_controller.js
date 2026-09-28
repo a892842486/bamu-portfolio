@@ -13,14 +13,13 @@ export default class extends Controller {
   drop(event) {
     event.preventDefault()
 
-    const draggedSkill = this.element.querySelector(
+    const draggedRow = this.element.querySelector(
       `[data-skill-id="${this.draggedSkillId}"]`
     )
 
-    if (!draggedSkill) return
+    const targetRow = event.currentTarget
 
-    const draggedRow = draggedSkill.parentElement
-    const targetRow = event.currentTarget.parentElement
+    if (!draggedRow || draggedRow === targetRow) return
 
     const rows = [...this.element.children]
 

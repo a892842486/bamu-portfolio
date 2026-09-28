@@ -1,0 +1,54 @@
+<div class="min-h-screen bg-[#F5F1E8] px-6 py-16">
+  <div class="mx-auto max-w-md">
+
+    <h1 class="mb-10 text-center text-3xl font-semibold text-[#4F4B43]">
+      Log in
+    </h1>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+      <div class="space-y-6">
+
+        <div>
+          <%= f.label :email,
+                      class: "mb-2 block text-sm font-medium text-[#6F6B63]" %>
+
+          <%= f.email_field :email,
+                            autofocus: true,
+                            autocomplete: "email",
+                            class: "w-full rounded-lg border border-[#C9C3B7] bg-white px-4 py-3 text-[#4F4B43] outline-none transition focus:border-[#8A857B]" %>
+        </div>
+
+        <div>
+          <%= f.label :password,
+                      class: "mb-2 block text-sm font-medium text-[#6F6B63]" %>
+
+          <%= f.password_field :password,
+                               autocomplete: "current-password",
+                               class: "w-full rounded-lg border border-[#C9C3B7] bg-white px-4 py-3 text-[#4F4B43] outline-none transition focus:border-[#8A857B]" %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="flex items-center gap-2">
+            <%= f.check_box :remember_me,
+                            class: "rounded border-[#C9C3B7]" %>
+
+            <%= f.label :remember_me,
+                        class: "text-sm text-[#6F6B63]" %>
+          </div>
+        <% end %>
+
+        <div>
+          <%= f.submit "Log in",
+                       class: "w-full rounded-lg bg-[#6F6B63] px-4 py-3 text-sm font-medium text-white transition hover:bg-[#4F4B43]" %>
+        </div>
+
+      </div>
+    <% end %>
+
+    <div class="mt-8 text-center text-sm text-[#77736A]">
+      <%= render "devise/shared/links" %>
+    </div>
+
+  </div>
+</div>

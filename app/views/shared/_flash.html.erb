@@ -1,15 +1,22 @@
 <% flash.each do |type, message| %>
   <% color_classes = case type.to_sym
-     when :notice then "bg-green-100 border-green-400 text-green-700"
-     when :alert  then "bg-red-100 border-red-400 text-red-700"
-     when :warning then "bg-yellow-100 border-yellow-400 text-yellow-700"
-     else "bg-blue-100 border-blue-400 text-blue-700"
+     when :notice then "bg-[#E8E3D8] border-[#C9C3B7] text-[#5F5A51]"
+     when :alert  then "bg-[#EEE2DE] border-[#D8C4BE] text-[#765B55]"
+     when :warning then "bg-[#EEE9D9] border-[#D8D0B8] text-[#6F674F]"
+     else "bg-[#E5E2DC] border-[#C9C3B7] text-[#5F5A51]"
      end %>
 
-  <div class="border px-4 py-3 rounded relative <%= color_classes %>" role="alert">
+  <div
+    class="relative mx-auto mt-6 max-w-6xl rounded-lg border px-4 py-3 shadow-sm <%= color_classes %>"
+    role="alert"
+  >
     <span class="block sm:inline"><%= message %></span>
-    <button onclick="this.parentElement.style.display='none'" 
-            class="absolute top-0 bottom-0 right-0 px-4 py-3 font-bold text-xl">
+
+    <button
+      onclick="this.parentElement.style.display='none'"
+      class="absolute right-4 top-5/11 -translate-y-1/2 text-xl font-bold opacity-60 transition hover:opacity-100"
+      aria-label="Close"
+    >
       ×
     </button>
   </div>

@@ -1,0 +1,52 @@
+<div class="min-h-screen bg-[#F5F1E8]">
+  <div class="mx-auto grid min-h-screen max-w-6xl items-center gap-20 px-4 py-20 md:grid-cols-2">
+
+    <!-- 左欄：圖片 -->
+    <div>
+    <%= image_tag "contact.jpg",
+                  class: "w-full max-w-[720px] rounded-2xl object-contain md:-translate-x-24" %>
+    </div>
+
+    <!-- 右欄：Contact 內容 -->
+    <div>
+      <h1 class="text-5xl font-semibold tracking-tight text-[#25231F]">
+        Contact
+      </h1>
+
+      <p class="mt-8 text-lg leading-8 text-[#55524B]">
+        如果你對我的作品或經歷有興趣，歡迎與我聯絡。
+      </p>
+
+      <div class="mt-12 space-y-10">
+
+        <div>
+          <h2 class="text-sm font-medium uppercase tracking-widest text-[#77736A]">
+            Email
+          </h2>
+
+          <%= mail_to @profile.contact_email,
+                      @profile.contact_email,
+                      class: "mt-2 inline-block text-xl text-[#4F4B43] hover:underline" %>
+        </div>
+
+        <% github_link = @profile.links.find { |link| link.label.downcase == "github" } %>
+
+        <% if github_link %>
+          <div>
+            <h2 class="text-sm font-medium uppercase tracking-widest text-[#77736A]">
+              GitHub
+            </h2>
+
+            <%= link_to github_link.url,
+                        github_link.url,
+                        target: "_blank",
+                        rel: "noopener noreferrer",
+                        class: "mt-2 inline-block text-xl text-[#4F4B43] hover:underline" %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+
+  </div>
+</div>
