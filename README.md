@@ -2,7 +2,7 @@
 
 使用 **Ruby on Rails 8** 開發的個人作品集網站，展示個人介紹、技術技能與開發專案，並提供後台管理介面，方便維護作品集內容。
 
-專案以 Rails MVC 架構開發，整合 Tailwind CSS、Stimulus、Active Storage 與 i18n，實作個人資料、技能、專案及圖片管理功能。
+專案以 Rails MVC 架構開發，整合 Tailwind CSS、Stimulus、Active Storage，實作個人資料、技能、專案及圖片管理功能。
 
 ## Features
 
@@ -39,7 +39,6 @@
 | Frontend             | Tailwind CSS    |
 | JavaScript           | Stimulus        |
 | Image Upload         | Active Storage  |
-| Internationalization | Rails i18n      |
 | Testing              | Rails Minitest  |
 | Version Control      | Git / GitHub    |
 
@@ -59,23 +58,58 @@
 
 ### Admin CRUD
 
-使用 Rails RESTful 架構建立後台管理功能，支援個人資料、技能及專案的新增、編輯、刪除與查詢。
+使用 Rails RESTful routes 建立後台管理功能，透過 Strong Parameters 控制資料寫入，實作 Profile、Skill 與 Project 的新增、編輯、刪除及管理功能。
 
 ### Skill Drag & Drop Sorting
 
-使用 Stimulus 實作技能拖曳排序，讓管理者能調整前台技能的顯示順序。
+使用 Stimulus 實作技能拖曳排序，讓管理者能調整技能的顯示順序，並將排序結果儲存至資料庫。
+
+### Project & Skill Associations
+
+使用 Active Record associations 建立 Project、Skill 與 ProjectSkill 之間的多對多關聯，並透過後台管理介面進行專案技能指派。
 
 ### Project Images
 
-使用 Active Storage 實作專案多圖片上傳、預覽及刪除，讓作品頁面能呈現實際開發成果。
-
-### Internationalization
-
-使用 Rails i18n 管理中英文介面文字，讓作品集支援多語系呈現。
+使用 Active Storage 管理專案多圖片上傳，並建立 ProjectImage 模型管理圖片說明與排序，支援後台圖片預覽及刪除。
 
 ## Screenshots
 
-作品畫面截圖將陸續補充。
+Home Page
+
+<img width="1920" height="1080" alt="01-bamu-portfolio-hom" src="https://github.com/user-attachments/assets/08ec4dd8-e759-436c-bc06-1fcb1bf76395" />
+
+About
+
+<img width="1920" height="1080" alt="02-bamu-protfolio-about" src="https://github.com/user-attachments/assets/3185a90d-881b-469f-8fe4-4a1d3dc74d4b" />
+
+My Projects
+
+<img width="1920" height="1080" alt="03-bamu-protfolio-my-projects" src="https://github.com/user-attachments/assets/1ca33524-ddb6-43b8-8530-fbf6aefb47bd" />
+
+Project
+
+<img width="1920" height="1080" alt="04-bamu-protfolio-project" src="https://github.com/user-attachments/assets/0117fcad-fac1-44b7-be87-480fd40c50a6" />
+
+Contact Me
+
+<img width="1920" height="1080" alt="05-bamu-portfolio-contact-me" src="https://github.com/user-attachments/assets/974dab2b-70f6-4cb2-b83b-2c7ce94e53ce" />
+
+<details>
+  <summary>Admin Dashboard Screenshots</summary>
+  
+  ### Project Management
+  
+<img width="1920" height="1080" alt="06-bamu-portfolio-admin-projects" src="https://github.com/user-attachments/assets/043c2916-beb1-4d42-bb7b-1537ee0d1a9d" />
+
+  ### Profile Management
+  
+<img width="1920" height="1080" alt="07-bamu-portfolio-admin-profile" src="https://github.com/user-attachments/assets/37a10002-65b5-4955-b3e1-292927bc081c" />
+
+  ### Skill Management
+  
+<img width="1920" height="1080" alt="08-bamu-portfolio-admin-skill-drag" src="https://github.com/user-attachments/assets/2da9ab67-13db-4113-b0dc-b37a8c596b60" />
+
+</details>
 
 ## Local Development
 
@@ -116,8 +150,3 @@ http://localhost:3000
 bin/rails test
 ```
 
-## Future Improvements
-
-* 完善作品展示內容與截圖
-* 持續優化響應式版面
-* 完善正式環境部署與維護
