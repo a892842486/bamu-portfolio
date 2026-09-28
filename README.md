@@ -4,6 +4,15 @@
 
 專案以 Rails MVC 架構開發，整合 Tailwind CSS、Stimulus、Active Storage，實作個人資料、技能、專案及圖片管理功能。
 
+<img width="1920" height="1080" alt="01-bamu-portfolio-hom" src="https://github.com/user-attachments/assets/08ec4dd8-e759-436c-bc06-1fcb1bf76395" />
+
+## Demo Admin Account
+
+You can use the following credentials to explore the admin dashboard:
+
+- **Email:** admin@test.com
+- **Password:** 123456
+
 ## Features
 
 ### Portfolio（前台）
