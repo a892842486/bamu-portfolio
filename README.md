@@ -78,19 +78,19 @@ Home Page
 
 <img width="1920" height="1080" alt="01-bamu-portfolio-hom" src="https://github.com/user-attachments/assets/08ec4dd8-e759-436c-bc06-1fcb1bf76395" />
 
-About
+About Me and Technologies
 
 <img width="1920" height="1080" alt="02-bamu-protfolio-about" src="https://github.com/user-attachments/assets/3185a90d-881b-469f-8fe4-4a1d3dc74d4b" />
 
-My Projects
+Portfolio Project List
 
 <img width="1920" height="1080" alt="03-bamu-protfolio-my-projects" src="https://github.com/user-attachments/assets/1ca33524-ddb6-43b8-8530-fbf6aefb47bd" />
 
-Project
+Amiibo Store Project Details
 
 <img width="1920" height="1080" alt="04-bamu-protfolio-project" src="https://github.com/user-attachments/assets/0117fcad-fac1-44b7-be87-480fd40c50a6" />
 
-Contact Me
+Contact Information
 
 <img width="1920" height="1080" alt="05-bamu-portfolio-contact-me" src="https://github.com/user-attachments/assets/974dab2b-70f6-4cb2-b83b-2c7ce94e53ce" />
 
