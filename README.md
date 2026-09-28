@@ -8,10 +8,12 @@
 
 ## Demo Admin Account
 
-You can use the following credentials to explore the admin dashboard:
+歡迎使用以下測試帳號登入後台，體驗管理功能。
 
-- **Email:** admin@test.com
-- **Password:** 123456
+- **Email：** admin@test.com
+- **密碼：** 123456
+
+**登入入口：** 網站頁尾的人物頭像，點擊即可進入管理員登入頁面。
 
 ## Features
 
