@@ -65,6 +65,7 @@ projects_data = [
       "PostgreSQL", "Devise", "Active Storage", "AWS S3",
       "Action Mailer", "i18n"
     ],
+    image_prefix: "amiibo-store",
     captions: [
       "Home Page",
       "Product Listing",
@@ -74,7 +75,7 @@ projects_data = [
     ]
   },
   {
-    name: "Bamu Profolio",
+    name: "Bamu Portfolio",
     summary: "使用 Ruby on Rails 開發的個人作品集網站，展示個人介紹與開發作品。",
     description: <<~TEXT,
       以 Ruby on Rails 開發的個人作品集網站，包含個人資料、技能與作品管理功能。
@@ -87,6 +88,7 @@ projects_data = [
       "Ruby", "Ruby on Rails", "JavaScript", "Tailwind CSS",
       "PostgreSQL", "Devise", "Active Storage", "Stimulus"
     ],
+    image_prefix: "bamu-portfolio",
     captions: [
       "Bamu Portfolio Home Page",
       "About Me and Technologies",
@@ -140,8 +142,9 @@ projects_data.each do |data|
     project_image.position = index + 1
     project_image.save!
 
+
     image_files = Dir[Rails.root.join(
-      "db/seeds/images/#{project.name.parameterize}-#{index + 1}-*"
+      "app/assets/images/screenshots/#{format('%02d', index + 1)}-#{data[:image_prefix]}-*"
     )]
 
     if image_files.any?
@@ -161,7 +164,11 @@ projects_data.each do |data|
             content_type: "image/png"
           )
         end
+
+        puts "Updated: #{File.basename(image_files.first)}"
       end
+    else
+      puts "Image not found: #{format('%02d', index + 1)}-#{data[:image_prefix]}-*"
     end
   end
 end
