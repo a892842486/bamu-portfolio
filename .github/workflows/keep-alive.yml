@@ -1,0 +1,27 @@
+name: Keep Render Sites Awake
+
+on:
+  schedule:
+    # 台灣時間週一至週五 07:50 預先喚醒
+    - cron: "50 7 * * 1-5"
+      timezone: "Asia/Taipei"
+    # 台灣時間週一至週五 08:00–17:50，每 10 分鐘執行
+    - cron: "*/10 8-17 * * 1-5"
+      timezone: "Asia/Taipei"
+  workflow_dispatch:
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Amiibo Store
+        run: |
+          curl --fail --silent --show-error --location \
+            --max-time 120 --retry 3 --retry-delay 10 \
+            https://jdstore20260510.onrender.com
+
+      - name: Ping Bamu Portfolio
+        run: |
+          curl --fail --silent --show-error --location \
+            --max-time 120 --retry 3 --retry-delay 10 \
+            https://bamu-portfolio.onrender.com
