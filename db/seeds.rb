@@ -59,6 +59,7 @@ projects_data = [
       訂單狀態使用 AASM 管理購買流程中的狀態轉換。
     TEXT
     github: "https://github.com/a892842486/amiibo-store",
+    live_demo: "https://jdstore20260510.onrender.com",
     skills: [
       "Ruby", "Ruby on Rails", "JavaScript", "Tailwind CSS",
       "PostgreSQL", "Devise", "Active Storage", "AWS S3",
@@ -115,11 +116,18 @@ projects_data.each do |data|
     association.save!
   end
 
-  # GitHub Link
-  link = project.links.find_or_initialize_by(label: "Github")
-  link.url = data[:github]
-  link.position = 1
-  link.save!
+  # Project Links
+  github_link = project.links.find_or_initialize_by(label: "Github")
+  github_link.url = data[:github]
+  github_link.position = 1
+  github_link.save!
+
+  if data[:live_demo].present?
+    demo_link = project.links.find_or_initialize_by(label: "Live Demo")
+    demo_link.url = data[:live_demo]
+    demo_link.position = 2
+    demo_link.save!
+  end
 
   # Project Images
   data[:captions].each_with_index do |caption, index|
