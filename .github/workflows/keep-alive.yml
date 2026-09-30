@@ -2,11 +2,7 @@ name: Keep Render Sites Awake
 
 on:
   schedule:
-    # 台灣時間週一至週五 07:50 預先喚醒
-    - cron: "50 7 * * 1-5"
-      timezone: "Asia/Taipei"
-    # 台灣時間週一至週五 08:00–17:50，每 10 分鐘執行
-    - cron: "*/10 8-17 * * 1-5"
+    - cron: "*/5 * * * *"
       timezone: "Asia/Taipei"
   workflow_dispatch:
 
