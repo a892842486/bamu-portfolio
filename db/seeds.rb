@@ -136,7 +136,6 @@ projects_data.each do |data|
     end
 
     project_image ||= project.project_images.build
-
     project_image.caption = caption
     project_image.position = index + 1
     project_image.save!
@@ -145,13 +144,23 @@ projects_data.each do |data|
       "db/seeds/images/#{project.name.parameterize}-#{index + 1}-*"
     )]
 
-    if image_files.any? && !project_image.image.attached?
-      File.open(image_files.first) do |file|
-        project_image.image.attach(
-          io: file,
-          filename: File.basename(image_files.first),
-          content_type: "image/png"
+    if image_files.any?
+      image_exists =
+        project_image.image.attached? &&
+        project_image.image.blob.service.exist?(
+          project_image.image.blob.key
         )
+
+      unless image_exists
+        project_image.image.purge if project_image.image.attached?
+
+        File.open(image_files.first) do |file|
+          project_image.image.attach(
+            io: file,
+            filename: File.basename(image_files.first),
+            content_type: "image/png"
+          )
+        end
       end
     end
   end
