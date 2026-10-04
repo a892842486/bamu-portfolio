@@ -1,0 +1,79 @@
+<div class="mx-auto max-w-4xl px-6 py-16">
+
+  <!-- Back to Readings -->
+  <div class="mb-10">
+    <%= link_to "← Back to Readings",
+                readings_path,
+                class: "text-sm font-medium text-[#77736A] transition hover:text-[#4F4B43]" %>
+  </div>
+
+  <!-- Article Header -->
+  <header class="mb-10">
+    <p class="text-sm font-medium tracking-widest text-[#77736A] uppercase">
+      Reading & Learning
+    </p>
+
+    <h1 class="mt-4 text-3xl font-semibold leading-tight tracking-tight text-[#4F4B43] sm:text-4xl">
+      <%= @reading.title %>
+    </h1>
+
+    <time class="mt-5 block text-sm text-[#77736A]">
+      <%= (@reading.read_at || @reading.created_at.to_date).strftime("%B %d, %Y") %>
+    </time>
+  </header>
+
+  <!-- Images -->
+  <% if @reading.images.attached? %>
+    <section class="mb-12"
+             data-controller="reading-gallery">
+
+      <div class="relative overflow-hidden rounded-2xl bg-[#EEEAE0] p-4 sm:p-8">
+        <div class="flex min-h-64 items-center justify-center">
+          <% @reading.images.each_with_index do |image, index| %>
+            <div data-reading-gallery-target="slide"
+                 class="<%= index.zero? ? 'flex' : 'hidden' %> w-full items-center justify-center">
+              <%= image_tag image,
+                            class: "max-h-[450px] max-w-[80%] rounded-lg object-contain" %>
+            </div>
+          <% end %>
+        </div>
+
+        <% if @reading.images.count > 1 %>
+          <button type="button"
+                  data-action="click->reading-gallery#previous"
+                  aria-label="Previous image"
+                  class="absolute left-3 top-1/2 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-[#F5F1E8] text-2xl text-[#4F4B43] shadow transition hover:bg-[#E8E4DA]">
+            ←
+          </button>
+
+          <button type="button"
+                  data-action="click->reading-gallery#next"
+                  aria-label="Next image"
+                  class="absolute right-3 top-1/2 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-[#F5F1E8] text-2xl text-[#4F4B43] shadow transition hover:bg-[#E8E4DA]">
+            →
+          </button>
+
+          <p class="mt-4 text-center text-sm text-[#77736A]"
+             data-reading-gallery-target="counter">
+            1 / <%= @reading.images.count %>
+          </p>
+        <% end %>
+      </div>
+    </section>
+  <% end %>
+
+  <!-- Article Content -->
+  <article class="rounded-2xl bg-[#EEEAE0] p-6 sm:p-10">
+    <div class="whitespace-pre-wrap break-words text-base leading-8 text-[#4F4B43]">
+      <%= @reading.content %>
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <div class="mt-10 border-t border-[#CFC9BB] pt-6">
+    <%= link_to "← Back to Readings",
+                readings_path,
+                class: "text-sm font-medium text-[#77736A] transition hover:text-[#4F4B43]" %>
+  </div>
+
+</div>

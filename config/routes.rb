@@ -10,8 +10,6 @@ Rails.application.routes.draw do
 
   root "welcome#index"
 
-
-
   namespace :admin do
     resource :profile
 
@@ -20,5 +18,11 @@ Rails.application.routes.draw do
     end
 
     resources :projects
+  end
+
+  resources :readings, only: [ :index, :show ]
+
+  namespace :admin do
+    resources :readings, except: [ :show ]
   end
 end

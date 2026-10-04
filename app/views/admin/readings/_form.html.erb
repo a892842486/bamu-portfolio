@@ -1,0 +1,89 @@
+
+<%= form_with model: [:admin, reading] do |form| %>
+  <div class="space-y-8">
+
+    <!-- Basic Information -->
+    <section class="rounded-2xl bg-[#EEEAE0] p-8">
+      <h2 class="text-xl font-semibold text-[#4F4B43]">
+        Basic Information
+      </h2>
+
+      <div class="mt-6 space-y-6">
+        <div>
+          <%= form.label :title,
+                         class: "block text-sm font-medium text-[#4F4B43]" %>
+
+          <%= form.text_field :title,
+                              class: "mt-2 w-full rounded-lg border border-[#CFC9BB] bg-[#F5F1E8] px-4 py-3 text-[#4F4B43] outline-none transition focus:border-[#77736A]" %>
+        </div>
+
+        <div>
+          <%= form.label :content,
+                         class: "block text-sm font-medium text-[#4F4B43]" %>
+
+          <%= form.text_area :content,
+                             rows: 16,
+                             class: "mt-2 w-full rounded-lg border border-[#CFC9BB] bg-[#F5F1E8] px-4 py-3 leading-7 text-[#4F4B43] outline-none transition focus:border-[#77736A]" %>
+        </div>
+
+        <div>
+          <%= form.label :read_at,
+                         "Reading Date",
+                         class: "block text-sm font-medium text-[#4F4B43]" %>
+
+          <%= form.date_field :read_at,
+                              class: "mt-2 w-full rounded-lg border border-[#CFC9BB] bg-[#F5F1E8] px-4 py-3 text-[#4F4B43] outline-none transition focus:border-[#77736A]" %>
+
+          <p class="mt-2 text-sm text-[#77736A]">
+            Optional. Leave blank to use the creation date.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Images -->
+    <section class="rounded-2xl bg-[#EEEAE0] p-8">
+      <h2 class="text-xl font-semibold text-[#4F4B43]">
+        Images
+      </h2>
+
+      <% if reading.images.attached? %>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          <% reading.images.each do |image| %>
+            <div class="rounded-xl bg-[#DED9CD] p-4">
+              <div class="flex max-h-[300px] items-center justify-center overflow-hidden">
+                <%= image_tag image,
+                              class: "max-h-[300px] max-w-full rounded-lg object-contain" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="mt-6">
+        <%= form.label :images,
+                       "Upload Images",
+                       class: "block text-sm font-medium text-[#4F4B43]" %>
+
+        <%= form.file_field :images,
+                            multiple: true,
+                            accept: "image/*",
+                            class: "mt-2 block w-full text-sm text-[#77736A] file:mr-4 file:rounded-lg file:border-0 file:bg-[#DED9CD] file:px-4 file:py-2 file:font-medium file:text-[#4F4B43] hover:file:bg-[#D5D0C4]" %>
+
+        <p class="mt-2 text-sm text-[#77736A]">
+          You can select multiple images.
+        </p>
+      </div>
+    </section>
+
+    <!-- Actions -->
+    <div class="flex justify-end gap-3">
+      <%= link_to "Cancel",
+                  admin_readings_path,
+                  class: "rounded-lg border border-[#CFC9BB] px-5 py-3 font-medium text-[#77736A] transition hover:bg-[#EEEAE0]" %>
+
+      <%= form.submit class: "rounded-lg bg-[#4F4B43] px-6 py-3 font-medium text-[#F5F1E8] transition hover:bg-[#55524B]" %>
+    </div>
+
+  </div>
+<% end %>

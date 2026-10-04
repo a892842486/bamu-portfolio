@@ -1,0 +1,123 @@
+<div class="mx-auto max-w-5xl px-6 py-16">
+
+  <!-- Header -->
+  <header class="mb-12">
+    <p class="text-sm font-medium tracking-widest text-[#77736A] uppercase">
+      Reading & Learning
+    </p>
+
+    <h1 class="mt-3 text-4xl font-semibold tracking-tight text-[#4F4B43]">
+      Reading Blog
+    </h1>
+
+    <p class="mt-6 max-w-3xl text-base leading-8 text-[#77736A]">
+      閱讀讓我有機會接觸不同的觀點，整理自己的思考，
+      也將學到的知識轉化為實際行動。
+      這裡記錄我的閱讀心得、技術筆記，以及一路累積的想法。
+    </p>
+  </header>
+
+  <!-- Search -->
+  <section class="mb-16">
+    <%= form_with url: readings_path, method: :get,
+                  class: "flex gap-3" do |form| %>
+      <%= form.search_field :q,
+                            value: params[:q],
+                            placeholder: "Search by title...",
+                            class: "min-w-0 flex-1 rounded-lg border border-[#CFC9BB] bg-[#F5F1E8] px-4 py-3 text-[#4F4B43] outline-none transition focus:border-[#77736A]" %>
+
+      <%= form.submit "Search",
+                      class: "rounded-lg bg-[#4F4B43] px-6 py-3 font-medium text-[#F5F1E8] transition hover:bg-[#55524B]" %>
+    <% end %>
+  </section>
+
+  <!-- Featured Readings -->
+  <% unless params[:q].present? %>
+    <section class="mb-16">
+      <div class="mb-6">
+        <h2 class="text-2xl font-semibold text-[#4F4B43]">
+          Featured Readings
+        </h2>
+        <p class="mt-2 text-sm text-[#77736A]">
+          Selected articles and reading notes.
+        </p>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <% @featured_readings.each do |reading| %>
+          <%= link_to reading_path(reading),
+                      class: "group overflow-hidden rounded-2xl bg-[#EEEAE0] transition hover:-translate-y-1 hover:shadow-md" do %>
+
+            <% if reading.images.attached? %>
+              <div class="flex h-48 items-center justify-center overflow-hidden bg-[#DED9CD] p-4">
+                <%= image_tag reading.images.first,
+                              class: "max-h-full max-w-full rounded-lg object-contain" %>
+              </div>
+            <% end %>
+
+            <div class="p-6">
+              <p class="text-sm text-[#77736A]">
+                <%= (reading.read_at || reading.created_at.to_date).strftime("%b %d, %Y") %>
+              </p>
+
+              <h3 class="mt-3 text-lg font-semibold leading-7 text-[#4F4B43] transition group-hover:text-[#77736A]">
+                <%= reading.title %>
+              </h3>
+
+              <p class="mt-3 line-clamp-3 text-sm leading-6 text-[#77736A]">
+                <%= strip_tags(reading.content).truncate(120) %>
+              </p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </section>
+  <% end %>
+
+  <!-- All Readings -->
+  <section>
+    <div class="mb-8">
+      <h2 class="text-2xl font-semibold text-[#4F4B43]">
+        <%= params[:q].present? ? "Search Results" : "All Readings" %>
+      </h2>
+
+      <p class="mt-2 text-sm text-[#77736A]">
+        <%= params[:q].present? ? "Articles matching your search." : "Browse all reading notes by year." %>
+      </p>
+    </div>
+
+    <% if @readings_by_year.present? %>
+      <div class="space-y-12">
+        <% @readings_by_year.each do |year, readings| %>
+          <section>
+            <h3 class="mb-5 border-b border-[#CFC9BB] pb-3 text-xl font-semibold text-[#4F4B43]">
+              <%= year %>
+            </h3>
+
+            <div class="space-y-4">
+              <% readings.each do |reading| %>
+                <%= link_to reading_path(reading),
+                            class: "group flex flex-col gap-2 rounded-xl bg-[#EEEAE0] p-5 transition hover:bg-[#E8E4DA] sm:flex-row sm:items-center sm:justify-between" do %>
+                  <h4 class="font-medium text-[#4F4B43] transition group-hover:text-[#77736A]">
+                    <%= reading.title %>
+                  </h4>
+
+                  <time class="shrink-0 text-sm text-[#77736A]">
+                    <%= (reading.read_at || reading.created_at.to_date).strftime("%Y-%m-%d") %>
+                  </time>
+                <% end %>
+              <% end %>
+            </div>
+          </section>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="rounded-2xl bg-[#EEEAE0] px-6 py-12 text-center">
+        <p class="text-[#77736A]">
+          <%= params[:q].present? ? "No readings found." : "No readings yet." %>
+        </p>
+      </div>
+    <% end %>
+  </section>
+
+</div>
