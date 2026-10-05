@@ -38,6 +38,14 @@
     <%= link_to "New Reading",
                 new_admin_reading_path,
                 class: "shrink-0 rounded-lg bg-[#4F4B43] px-5 py-3 font-medium text-[#F5F1E8] transition hover:bg-[#55524B]" %>
+
+    <%= button_to "Backup Readings",
+                  backup_admin_readings_path,
+                  method: :post,
+                  data: {
+                    turbo_confirm: "確定要備份文章嗎？這會覆蓋目前的離線備份資料。"
+                  },
+                  class: "shrink-0 rounded-lg bg-[#4F4B43] px-5 py-3 font-medium text-[#F5F1E8] transition hover:bg-[#55524B]" %>
   </div>
 
   <% if @readings.any? %>

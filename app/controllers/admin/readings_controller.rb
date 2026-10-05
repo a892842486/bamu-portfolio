@@ -38,6 +38,55 @@ class Admin::ReadingsController < ApplicationController
     redirect_to admin_readings_path, notice: "文章刪除成功。"
   end
 
+  def backup
+    backup_dir = Rails.root.join("db", "reading_notes")
+    readings_file = backup_dir.join("readings.json")
+
+    readings = Reading.ordered
+
+    data = readings.map do |reading|
+      filename = "#{reading.title}.md"
+
+      images = reading.images.each_with_index.map do |image, index|
+        extension = File.extname(image.filename.to_s)
+        "images/#{reading.title}-#{format('%02d', index + 1)}#{extension}"
+      end
+
+      {
+        title: reading.title,
+        file: filename,
+        read_at: reading.read_at,
+        images: images
+      }
+    end
+
+    readings_file.write(
+      JSON.pretty_generate(data)
+    )
+
+    readings.each do |reading|
+      # 備份文章文字
+      filename = "#{reading.title}.md"
+      markdown_file = backup_dir.join(filename)
+
+      markdown_file.write(reading.content)
+
+      # 備份文章圖片
+      images_dir = backup_dir.join("images")
+      FileUtils.mkdir_p(images_dir)
+
+      reading.images.each_with_index do |image, index|
+        extension = File.extname(image.filename.to_s)
+        image_filename = "#{reading.title}-#{format('%02d', index + 1)}#{extension}"
+        image_file = images_dir.join(image_filename)
+
+        image_file.binwrite(image.download)
+      end
+    end
+
+    redirect_to admin_readings_path, notice: "Reading 備份成功。"
+  end
+
   private
 
   def set_reading

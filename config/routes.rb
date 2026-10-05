@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   resources :readings, only: [ :index, :show ]
 
   namespace :admin do
-    resources :readings, except: [ :show ]
+    resources :readings, except: [ :show ] do
+      post :backup, on: :collection
+    end
   end
 end
