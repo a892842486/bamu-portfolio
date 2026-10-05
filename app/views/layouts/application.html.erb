@@ -24,10 +24,10 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-[#F5F1E8]">
+  <body class="min-h-screen flex flex-col bg-[#F5F1E8]">
     <%= render "shared/navbar" %>
 
-    <main>
+    <main class="flex-1">
       <%= render "shared/flash" %>
 
       <%= yield %>

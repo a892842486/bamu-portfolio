@@ -1,4 +1,3 @@
-
 <div class="mx-auto max-w-4xl px-6 py-16">
   <div class="mb-12 flex items-end justify-between">
     <div>
@@ -12,10 +11,6 @@
         </h1>
 
         <div class="flex items-center gap-4 text-sm">
-          <%= link_to "Readings",
-                      admin_readings_path,
-                      class: "text-[#77736A] transition hover:text-[#4F4B43]" %>
-
           <%= link_to "Projects",
                       admin_projects_path,
                       class: "text-[#77736A] transition hover:text-[#4F4B43]" %>
@@ -27,6 +22,10 @@
           <%= link_to "Skills",
                       admin_skills_path,
                       class: "text-[#77736A] transition hover:text-[#4F4B43]" %>
+
+          <%= link_to "Readings",
+                      admin_readings_path,
+                      class: "text-[#77736A] transition hover:text-[#4F4B43]" %>
         </div>
       </div>
 
@@ -35,17 +34,19 @@
       </p>
     </div>
 
-    <%= link_to "New Reading",
-                new_admin_reading_path,
-                class: "shrink-0 rounded-lg bg-[#4F4B43] px-5 py-3 font-medium text-[#F5F1E8] transition hover:bg-[#55524B]" %>
+    <div class="flex shrink-0 gap-3">
+      <%= link_to "New Reading",
+                  new_admin_reading_path,
+                  class: "rounded-lg bg-[#4F4B43] px-5 py-3 font-medium text-[#F5F1E8] transition hover:bg-[#55524B]" %>
 
-    <%= button_to "Backup Readings",
-                  backup_admin_readings_path,
-                  method: :post,
-                  data: {
-                    turbo_confirm: "確定要備份文章嗎？這會覆蓋目前的離線備份資料。"
-                  },
-                  class: "shrink-0 rounded-lg bg-[#4F4B43] px-5 py-3 font-medium text-[#F5F1E8] transition hover:bg-[#55524B]" %>
+      <%= button_to "Backup",
+                    backup_admin_readings_path,
+                    method: :post,
+                    data: {
+                      turbo_confirm: "確定要備份文章嗎？這會覆蓋目前的離線備份資料。"
+                    },
+                    class: "rounded-lg border border-[#CFC9BB] px-5 py-3 font-medium text-[#77736A] transition hover:bg-[#DED9CD]" %>
+    </div>
   </div>
 
   <% if @readings.any? %>

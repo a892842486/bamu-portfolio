@@ -31,6 +31,12 @@
                     class: "rounded-lg px-10 py-2 text-base font-medium tracking-wide
                             #{current_page?(contact_path) ? 'bg-[#E8E4DA] text-[#55524B]' : 'text-[#55524B]'}
                             transition hover:bg-[#E8E4DA] hover:text-[#25231F]" %>
+
+        <%= link_to "Blog",
+                    readings_path,
+                    class: "rounded-lg px-10 py-2 text-base font-medium tracking-wide
+                            #{current_page?(readings_path) ? 'bg-[#E8E4DA] text-[#55524B]' : 'text-[#55524B]'}
+                            transition hover:bg-[#E8E4DA] hover:text-[#25231F]" %>
       </div>
 
       <!-- Mobile navigation -->
