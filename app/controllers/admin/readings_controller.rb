@@ -16,6 +16,8 @@ class Admin::ReadingsController < ApplicationController
     @reading = Reading.new(reading_params)
 
     if @reading.save
+      @reading.images.attach(params[:reading][:images]) if params[:reading][:images].present?
+
       redirect_to admin_readings_path, notice: "文章新增成功。"
     else
       render :new, status: :unprocessable_entity
@@ -27,6 +29,13 @@ class Admin::ReadingsController < ApplicationController
 
   def update
     if @reading.update(reading_params)
+      @reading.images.attach(params[:reading][:images]) if params[:reading][:images].present?
+
+      params[:reading][:remove_image_ids]&.each do |image_id|
+        image = @reading.images.find(image_id)
+        image.purge
+      end
+
       redirect_to admin_readings_path, notice: "文章更新成功。"
     else
       render :edit, status: :unprocessable_entity
@@ -97,8 +106,7 @@ class Admin::ReadingsController < ApplicationController
     params.require(:reading).permit(
       :title,
       :content,
-      :read_at,
-      images: []
+      :read_at
     )
   end
 end

@@ -6,11 +6,169 @@
     "images": []
   },
   {
+    "title": "晶片戰爭",
+    "file": "晶片戰爭.md",
+    "read_at": "2024-06-17",
+    "images": [
+      "images/晶片戰爭-01.webp"
+    ]
+  },
+  {
+    "title": "反智（讀第二次）",
+    "file": "反智（讀第二次）.md",
+    "read_at": "2024-05-15",
+    "images": [
+      "images/反智（讀第二次）-01.webp"
+    ]
+  },
+  {
+    "title": "打造超人學習",
+    "file": "打造超人學習.md",
+    "read_at": "2023-09-23",
+    "images": [
+      "images/打造超人學習-01.webp"
+    ]
+  },
+  {
+    "title": "致富心態",
+    "file": "致富心態.md",
+    "read_at": "2023-06-22",
+    "images": [
+      "images/致富心態-01.webp"
+    ]
+  },
+  {
+    "title": "遠距離工作這樣做",
+    "file": "遠距離工作這樣做.md",
+    "read_at": "2023-05-25",
+    "images": [
+      "images/遠距離工作這樣做-01.webp"
+    ]
+  },
+  {
+    "title": "蛤蟆先生去看心理師",
+    "file": "蛤蟆先生去看心理師.md",
+    "read_at": "2023-04-28",
+    "images": [
+      "images/蛤蟆先生去看心理師-01.webp"
+    ]
+  },
+  {
+    "title": "異數",
+    "file": "異數.md",
+    "read_at": "2023-04-14",
+    "images": [
+      "images/異數-01.webp"
+    ]
+  },
+  {
+    "title": "人慈",
+    "file": "人慈.md",
+    "read_at": "2022-11-07",
+    "images": [
+      "images/人慈-01.webp"
+    ]
+  },
+  {
+    "title": "阿姨，我不想努力了",
+    "file": "阿姨，我不想努力了.md",
+    "read_at": "2022-10-15",
+    "images": [
+      "images/阿姨，我不想努力了-01.webp"
+    ]
+  },
+  {
+    "title": "唐鳳的破框思考力",
+    "file": "唐鳳的破框思考力.md",
+    "read_at": "2022-10-14",
+    "images": [
+      "images/唐鳳的破框思考力-01.webp"
+    ]
+  },
+  {
+    "title": "反智",
+    "file": "反智.md",
+    "read_at": "2022-10-01",
+    "images": [
+      "images/反智-01.webp"
+    ]
+  },
+  {
+    "title": "人類大歷史",
+    "file": "人類大歷史.md",
+    "read_at": "2022-08-31",
+    "images": [
+      "images/人類大歷史-01.webp"
+    ]
+  },
+  {
+    "title": "階級世代",
+    "file": "階級世代.md",
+    "read_at": "2022-08-07",
+    "images": [
+      "images/階級世代-01.webp"
+    ]
+  },
+  {
+    "title": "天生不愛動",
+    "file": "天生不愛動.md",
+    "read_at": "2022-07-03",
+    "images": [
+      "images/天生不愛動-01.webp"
+    ]
+  },
+  {
+    "title": "自由的窄廊",
+    "file": "自由的窄廊.md",
+    "read_at": "2020-05-18",
+    "images": [
+      "images/自由的窄廊-01.webp",
+      "images/自由的窄廊-02.webp"
+    ]
+  },
+  {
+    "title": "我在Amazon 12年學到再多錢都買不到的創業課",
+    "file": "我在Amazon 12年學到再多錢都買不到的創業課.md",
+    "read_at": "2020-04-07",
+    "images": [
+      "images/我在Amazon 12年學到再多錢都買不到的創業課-01.jpg",
+      "images/我在Amazon 12年學到再多錢都買不到的創業課-02.jpg"
+    ]
+  },
+  {
+    "title": "追尋現代中國-從共產主義到市場經濟",
+    "file": "追尋現代中國-從共產主義到市場經濟.md",
+    "read_at": "2020-03-06",
+    "images": [
+      "images/追尋現代中國-從共產主義到市場經濟-01.webp"
+    ]
+  },
+  {
+    "title": "大清帝國與中華的混迷",
+    "file": "大清帝國與中華的混迷.md",
+    "read_at": "2019-03-01",
+    "images": [
+      "images/大清帝國與中華的混迷-01.webp",
+      "images/大清帝國與中華的混迷-02.webp",
+      "images/大清帝國與中華的混迷-03.webp"
+    ]
+  },
+  {
+    "title": "教學的技術",
+    "file": "教學的技術.md",
+    "read_at": "2019-02-14",
+    "images": [
+      "images/教學的技術-01.webp",
+      "images/教學的技術-02.webp"
+    ]
+  },
+  {
     "title": "人類大歷史",
     "file": "人類大歷史.md",
     "read_at": "2014-06-10",
     "images": [
-      "images/人類大歷史-01.webp"
+      "images/人類大歷史-01.webp",
+      "images/人類大歷史-02.webp"
     ]
   }
 ]

@@ -56,6 +56,14 @@
                 <%= image_tag image,
                               class: "max-h-[300px] max-w-full rounded-lg object-contain" %>
               </div>
+              
+              <label class="mt-4 flex items-center gap-2 text-sm text-[#77736A]">
+                <%= check_box_tag "reading[remove_image_ids][]",
+                                  image.id,
+                                  false %>
+
+                Delete this image
+              </label>
             </div>
           <% end %>
         </div>
