@@ -1,11 +1,5 @@
 [
   {
-    "title": "測試文章",
-    "file": "測試文章.md",
-    "read_at": null,
-    "images": []
-  },
-  {
     "title": "晶片戰爭",
     "file": "晶片戰爭.md",
     "read_at": "2024-06-17",
@@ -569,15 +563,6 @@
     "images": [
       "images/讓顧客的錢自動流進來-01.jpg",
       "images/讓顧客的錢自動流進來-02.jpg"
-    ]
-  },
-  {
-    "title": "人類大歷史",
-    "file": "人類大歷史.md",
-    "read_at": "2014-06-10",
-    "images": [
-      "images/人類大歷史-01.webp",
-      "images/人類大歷史-02.webp"
     ]
   }
 ]
