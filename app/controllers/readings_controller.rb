@@ -1,6 +1,6 @@
 class ReadingsController < ApplicationController
   # 之後選定精選文章時，填入對應的 Reading ID
-  FEATURED_READING_IDS = [].freeze
+  FEATURED_READING_IDS = [ 16, 45, 70, 52, 21 ].freeze
 
   def index
     @search_query = params[:q].to_s.strip
