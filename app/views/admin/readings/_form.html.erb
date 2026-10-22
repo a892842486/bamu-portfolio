@@ -4,36 +4,36 @@
   <div class="space-y-8">
 
     <!-- Basic Information -->
-    <section class="rounded-2xl bg-[#EEEAE0] p-8">
-      <h2 class="text-xl font-semibold text-[#4F4B43]">
+    <section class="rounded-2xl bg-[#EEEAE0] dark:bg-[#33342E] p-8">
+      <h2 class="text-xl font-semibold text-[#4F4B43] dark:text-[#F0EEE6]">
         Basic Information
       </h2>
 
       <div class="mt-6 space-y-6">
         <div>
           <%= form.label :title,
-                         class: "block text-sm font-medium text-[#4F4B43]" %>
+                         class: "block text-sm font-medium text-[#4F4B43] dark:text-[#F0EEE6]" %>
 
           <%= form.text_field :title,
-                              class: "mt-2 w-full rounded-lg border border-[#CFC9BB] bg-[#F5F1E8] px-4 py-3 text-[#4F4B43] outline-none transition focus:border-[#77736A]" %>
+                              class: "mt-2 w-full rounded-lg border border-[#CFC9BB] dark:border-[#55574D] bg-[#F5F1E8] dark:bg-[#33342E] px-4 py-3 text-[#4F4B43] dark:text-[#F0EEE6] outline-none transition focus:border-[#77736A] dark:focus:border-[#B5BE99]" %>
         </div>
 
         <div>
           <%= form.label :content,
-                         class: "block text-sm font-medium text-[#4F4B43]" %>
+                         class: "block text-sm font-medium text-[#4F4B43] dark:text-[#F0EEE6]" %>
 
           <%= form.text_area :content,
                              rows: 16,
-                             class: "mt-2 w-full rounded-lg border border-[#CFC9BB] bg-[#F5F1E8] px-4 py-3 leading-7 text-[#4F4B43] outline-none transition focus:border-[#77736A]" %>
+                             class: "mt-2 w-full rounded-lg border border-[#CFC9BB] dark:border-[#55574D] bg-[#F5F1E8] dark:bg-[#33342E] px-4 py-3 text-[#4F4B43] dark:text-[#F0EEE6] outline-none transition focus:border-[#77736A] dark:focus:border-[#B5BE99]" %>
         </div>
 
         <div>
           <%= form.label :read_at,
                          "Reading Date",
-                         class: "block text-sm font-medium text-[#4F4B43]" %>
+                         class: "block text-sm font-medium text-[#4F4B43] dark:text-[#F0EEE6]" %>
 
           <%= form.date_field :read_at,
-                              class: "mt-2 w-full rounded-lg border border-[#CFC9BB] bg-[#F5F1E8] px-4 py-3 text-[#4F4B43] outline-none transition focus:border-[#77736A]" %>
+                              class: "mt-2 w-full rounded-lg border border-[#CFC9BB] dark:border-[#55574D] bg-[#F5F1E8] dark:bg-[#33342E] px-4 py-3 text-[#4F4B43] dark:text-[#F0EEE6] outline-none transition focus:border-[#77736A] dark:focus:border-[#B5BE99]" %>
 
           <p class="mt-2 text-sm text-[#77736A]">
             Optional. Leave blank to use the creation date.
@@ -43,8 +43,8 @@
     </section>
 
     <!-- Images -->
-    <section class="rounded-2xl bg-[#EEEAE0] p-8">
-      <h2 class="text-xl font-semibold text-[#4F4B43]">
+    <section class="rounded-2xl bg-[#EEEAE0] dark:bg-[#33342E] p-8">
+      <h2 class="text-xl font-semibold text-[#4F4B43] dark:text-[#F0EEE6]">
         Images
       </h2>
 
@@ -72,12 +72,12 @@
       <div class="mt-6">
         <%= form.label :images,
                        "Upload Images",
-                       class: "block text-sm font-medium text-[#4F4B43]" %>
+                       class: "block text-sm font-medium text-[#4F4B43] dark:text-[#F0EEE6]" %>
 
         <%= form.file_field :images,
                             multiple: true,
                             accept: "image/*",
-                            class: "mt-2 block w-full text-sm text-[#77736A] file:mr-4 file:rounded-lg file:border-0 file:bg-[#DED9CD] file:px-4 file:py-2 file:font-medium file:text-[#4F4B43] hover:file:bg-[#D5D0C4]" %>
+                            class: "mt-2 block w-full text-sm text-[#77736A] file:mr-4 file:rounded-lg file:border-0 file:bg-[#DED9CD] file:px-4 file:py-2 file:font-medium file:text-[#4F4B43] dark:text-[#F0EEE6] hover:file:bg-[#D5D0C4]" %>
 
         <p class="mt-2 text-sm text-[#77736A]">
           You can select multiple images.
@@ -89,7 +89,7 @@
     <div class="flex justify-end gap-3">
       <%= link_to "Cancel",
                   admin_readings_path,
-                  class: "rounded-lg border border-[#CFC9BB] px-5 py-3 font-medium text-[#77736A] transition hover:bg-[#EEEAE0]" %>
+                  class: "rounded-lg border border-[#CFC9BB] dark:border-[#55574D] px-5 py-3 font-medium text-[#77736A] dark:text-[#C5C1B6] transition hover:bg-[#EEEAE0] dark:bg-[#33342E] dark:hover:bg-[#45473E]" %>
 
       <%= form.submit class: "rounded-lg bg-[#4F4B43] px-6 py-3 font-medium text-[#F5F1E8] transition hover:bg-[#55524B]" %>
     </div>

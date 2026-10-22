@@ -1,4 +1,7 @@
-<nav class="bg-[#F5F1E8]">
+<nav
+  class="bg-[#F5F1E8]"
+  data-controller="theme"
+>
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-20 items-center justify-between">
 
@@ -37,6 +40,18 @@
                     class: "rounded-lg px-10 py-2 text-base font-medium tracking-wide
                             #{current_page?(contact_path) ? 'bg-[#E8E4DA] text-[#55524B]' : 'text-[#55524B]'}
                             transition hover:bg-[#E8E4DA] hover:text-[#25231F]" %>
+
+        <button
+          type="button"
+          data-action="click->theme#toggle"
+          class="flex h-10 w-10 items-center justify-center rounded-lg
+                text-[#55524B] transition hover:bg-[#E8E4DA]
+                hover:text-[#25231F]"
+          aria-label="Toggle dark mode"
+          title="Toggle dark mode"
+        >
+          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+        </button>
       </div>
 
       <!-- Mobile navigation -->
@@ -49,13 +64,25 @@
         </summary>
 
         <div class="absolute right-0 top-12 z-50 w-44 rounded-xl border border-[#DDD8CC] bg-[#FFFCF7] py-2 shadow-lg">
+          <%= link_to "HOME", root_path,
+                      class: "block px-4 py-3 text-sm font-medium text-[#55524B] transition hover:bg-[#EDE8DC]" %>
           <%= link_to "About", root_path(anchor: "about"),
                       class: "block px-4 py-3 text-sm font-medium text-[#55524B] transition hover:bg-[#EDE8DC]" %>
           <%= link_to "Projects", projects_path,
                       class: "block px-4 py-3 text-sm font-medium text-[#55524B] transition hover:bg-[#EDE8DC]" %>
-
+          <%= link_to "Blog", readings_path,
+                      class: "block px-4 py-3 text-sm font-medium text-[#55524B] transition hover:bg-[#EDE8DC]" %>
           <%= link_to "Contact", contact_path,
                       class: "block px-4 py-3 text-sm font-medium text-[#55524B] transition hover:bg-[#EDE8DC]" %>
+          <button
+            type="button"
+            data-action="click->theme#toggle"
+            class="flex w-full items-center gap-3 px-4 py-3 text-sm
+                  font-medium text-[#55524B] transition hover:bg-[#EDE8DC]"
+          >
+            <i class="fa-solid fa-moon" aria-hidden="true"></i>
+            Toggle dark mode
+          </button>
         </div>
       </details>
 

@@ -8,7 +8,7 @@
       Reading & Learning
     </p>
 
-    <h1 class="mt-4 text-3xl font-semibold leading-tight tracking-tight text-[#4F4B43] sm:text-4xl">
+    <h1 class="mt-4 text-3xl font-semibold leading-tight tracking-tight text-[#4F4B43] dark:text-[#F0EEE6] sm:text-4xl">
       <%= @reading.title %>
     </h1>
 
@@ -22,7 +22,7 @@
     <section class="mb-12"
              data-controller="reading-gallery">
 
-      <div class="relative overflow-hidden rounded-2xl bg-[#EEEAE0] p-4 sm:p-8">
+      <div class="relative overflow-hidden rounded-2xl bg-[#EEEAE0] dark:bg-[#33342E] p-4 sm:p-8">
         <div class="flex min-h-64 items-center justify-center">
           <% @reading.images.each_with_index do |image, index| %>
             <div data-reading-gallery-target="slide"
@@ -58,8 +58,8 @@
   <% end %>
 
   <!-- Article Content -->
-  <article class="rounded-2xl bg-[#EEEAE0] p-6 sm:p-10">
-    <div class="whitespace-pre-wrap break-words text-base leading-8 text-[#4F4B43]">
+  <article class="rounded-2xl bg-[#EEEAE0] dark:bg-[#33342E] p-6 sm:p-10">
+    <div class="whitespace-pre-wrap break-words text-base leading-8 text-[#4F4B43] dark:text-[#F0EEE6]">
       <%= @reading.content %>
     </div>
   </article>
