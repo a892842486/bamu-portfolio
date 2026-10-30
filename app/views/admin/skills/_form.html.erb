@@ -1,10 +1,10 @@
 <% if @skill.errors.any? %>
-  <div class="mb-8 rounded-xl bg-[#DED9CD] p-5">
-    <h2 class="font-medium text-[#4F4B43]">
+  <div class="mb-8 rounded-xl bg-[#DED9CD] dark:bg-[#403C35] p-5">
+    <h2 class="font-medium text-[#4F4B43] dark:text-[#E5DED2]">
       Please check the following:
     </h2>
 
-    <ul class="mt-3 list-disc space-y-1 pl-5 text-sm text-[#77736A]">
+    <ul class="mt-3 list-disc space-y-1 pl-5 text-sm text-[#77736A] dark:text-[#B8B0A4]">
       <% @skill.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
@@ -13,26 +13,26 @@
 <% end %>
 
 <%= form_with model: [:admin, @skill] do |form| %>
-  <section class="rounded-2xl bg-[#EEEAE0] p-8">
+  <section class="rounded-2xl bg-[#EEEAE0] dark:bg-[#302D28] p-8">
 
-    <h2 class="text-xl font-semibold text-[#4F4B43]">
+    <h2 class="text-xl font-semibold text-[#4F4B43] dark:text-[#E5DED2]">
       Skill Information
     </h2>
 
     <div class="mt-6">
       <%= form.label :name,
-                     class: "block text-sm font-medium text-[#4F4B43]" %>
+                     class: "block text-sm font-medium text-[#4F4B43] dark:text-[#E5DED2]" %>
 
       <%= form.text_field :name,
-                          class: "mt-2 w-full rounded-lg border border-[#CFC9BB] bg-[#F5F1E8] px-4 py-3 text-[#4F4B43] outline-none transition focus:border-[#77736A]" %>
+                          class: "mt-2 w-full rounded-lg border border-[#CFC9BB] dark:border-[#625B50] bg-[#F5F1E8] dark:bg-[#292723] px-4 py-3 text-[#4F4B43] dark:text-[#E5DED2] outline-none transition focus:border-[#77736A] dark:focus:border-[#B8B0A4]" %>
     </div>
 
     <div class="mt-8 flex justify-end gap-3">
       <%= link_to "Cancel",
                   admin_skills_path,
-                  class: "rounded-lg border border-[#CFC9BB] px-5 py-3 font-medium text-[#77736A] transition hover:bg-[#EEEAE0]" %>
+                  class: "rounded-lg border border-[#CFC9BB] dark:border-[#625B50] px-5 py-3 font-medium text-[#77736A] dark:text-[#B8B0A4] transition hover:bg-[#EEEAE0] dark:hover:bg-[#403C35] dark:bg-[#302D28]" %>
 
-      <%= form.submit class: "rounded-lg bg-[#4F4B43] px-6 py-3 font-medium text-[#F5F1E8] transition hover:bg-[#55524B]" %>
+      <%= form.submit class: "rounded-lg bg-[#4F4B43] dark:bg-[#514B42] px-6 py-3 font-medium text-[#F5F1E8] transition hover:bg-[#55524B] dark:hover:bg-[#625B50]" %>
     </div>
 
   </section>
