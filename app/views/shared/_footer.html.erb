@@ -1,4 +1,4 @@
-<footer class="bg-[#DED9CD] py-8 text-center text-sm text-[#77736A]">
+<footer class="bg-[#DED9CD] dark:bg-[#302D28] py-8 text-center text-sm text-[#77736A] dark:text-[#B8B0A4]">
   <div class="flex flex-col items-center gap-6">
     <% github_link = Profile.first.links.find { |link| link.label.downcase == "github" } %>
 
@@ -7,7 +7,7 @@
       <%= link_to github_link.url,
                   target: "_blank",
                   rel: "noopener noreferrer",
-                  class: "text-[#6F6B63] transition hover:text-[#4F4B43]",
+                  class: "text-[#6F6B63] dark:text-[#D6D0C5] transition hover:text-[#4F4B43] dark:hover:text-[#FFFFFF]",
                   aria: { label: "GitHub" } do %>
         <i class="fa-brands fa-github text-xl" aria-hidden="true"></i>
       <% end %>
@@ -15,14 +15,14 @@
       <% if user_signed_in? %>
 
         <%= link_to admin_projects_path,
-                    class: "text-[#6F6B63] transition hover:text-[#4F4B43]",
+                    class: "text-[#6F6B63] dark:text-[#D6D0C5] transition hover:text-[#4F4B43] dark:hover:text-[#FFFFFF]",
                     aria: { label: "Admin Projects" } do %>
           <i class="fa-solid fa-gear text-xl" aria-hidden="true"></i>
         <% end %>
 
 <%= link_to destroy_user_session_path,
             data: { turbo_method: :delete },
-            class: "text-[#6F6B63] transition hover:text-[#4F4B43]",
+            class: "text-[#6F6B63] dark:text-[#D6D0C5] transition hover:text-[#4F4B43] dark:hover:text-[#FFFFFF]",
             aria: { label: "Logout" } do %>
   <i class="fa-solid fa-right-from-bracket text-xl" aria-hidden="true"></i>
 <% end %>
@@ -30,7 +30,7 @@
       <% else %>
 
         <%= link_to new_user_session_path,
-                    class: "text-[#6F6B63] transition hover:text-[#4F4B43]",
+                    class: "text-[#6F6B63] dark:text-[#D6D0C5] transition hover:text-[#4F4B43] dark:hover:text-[#FFFFFF]",
                     aria: { label: "Login" } do %>
           <i class="fa-solid fa-circle-user text-xl" aria-hidden="true"></i>
         <% end %>
