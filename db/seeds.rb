@@ -99,7 +99,31 @@ projects_data = [
       "Profile Management",
       "Skills Management (it can drag)"
     ]
-  }
+  },
+{
+  name: "Reading Blog",
+  summary: "以 Ruby on Rails 開發的閱讀筆記系統，支援書籍搜尋、圖片管理、資料備份與深色模式。",
+  description: <<~TEXT,
+    在 Bamu Portfolio 專案中擴充閱讀筆記系統，展示個人閱讀紀錄與書籍心得。
+    提供書籍搜尋、Featured Readings 與閱讀筆記詳細頁面。
+    建立 Admin 後台，支援閱讀資料新增、編輯、刪除，以及多張圖片上傳與管理。
+    使用 Active Storage 管理圖片，並提供閱讀資料備份與還原功能。
+    使用 Tailwind CSS 與 Stimulus 實作網站深色模式切換。
+  TEXT
+  github: "https://github.com/a892842486/bamu-portfolio",
+  skills: [
+    "Ruby", "Ruby on Rails", "JavaScript", "Tailwind CSS",
+    "PostgreSQL", "Active Storage", "Stimulus"
+  ],
+  image_prefix: "reading-blog",
+  captions: [
+    "Reading Blog Index",
+    "Reading Details",
+    "Reading Search",
+    "Reading Management",
+    "Reading Blog Dark Mode"
+  ]
+}
 ]
 
 projects_data.each do |data|
