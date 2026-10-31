@@ -1,5 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=LINE+Seed+Sans+TC:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
 
+:root {
+  color-scheme: light;
+
+  --color-page: #F5F1E8;
+  --color-surface: #FFFFFF;
+  --color-text: #4F4B43;
+  --color-muted: #77736A;
+  --color-accent: #777F5B;
+}
+
+:root.dark {
+  color-scheme: dark;
+
+  --color-page: #252622;
+  --color-surface: #33342E;
+  --color-text: #F0EEE6;
+  --color-muted: #C5C1B6;
+  --color-accent: #BFCBA0;
+}
+
 body {
   font-family: "Plus Jakarta Sans", "LINE Seed Sans TC", sans-serif;
+  background-color: var(--color-page);
+  color: var(--color-text);
 }

@@ -174,3 +174,31 @@ projects_data.each do |data|
 end
 
 puts "Portfolio seeds completed!"
+
+# Readings
+reading_notes_dir = Rails.root.join("db", "reading_notes")
+readings_file = reading_notes_dir.join("readings.json")
+
+readings_data = JSON.parse(readings_file.read)
+
+readings_data.each do |data|
+  markdown_file = reading_notes_dir.join(data["file"])
+  content = markdown_file.read
+
+  reading = Reading.find_or_initialize_by(title: data["title"])
+  reading.content = content
+  reading.read_at = data["read_at"]
+  reading.save!
+
+  data["images"].to_a.each do |image_path|
+    image_file = reading_notes_dir.join(image_path)
+
+    reading.images.attach(
+      io: File.open(image_file),
+      filename: File.basename(image_file),
+      content_type: Marcel::MimeType.for(image_file)
+    )
+  end
+
+  puts "Reading imported: #{reading.title}"
+end
