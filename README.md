@@ -1,8 +1,8 @@
 # Bamu Portfolio
 
-使用 **Ruby on Rails 8** 開發的個人作品集網站，展示個人介紹、技術技能與開發專案，並提供後台管理介面，方便維護作品集內容。
+使用 **Ruby on Rails 8** 開發的個人作品集與閱讀筆記網站，展示個人介紹、技術技能、開發專案及閱讀紀錄，並提供後台管理介面。
 
-專案以 Rails MVC 架構開發，整合 Tailwind CSS、Stimulus、Active Storage，實作個人資料、技能、專案及圖片管理功能。
+專案以 Rails MVC 架構開發，整合 Tailwind CSS、Stimulus 與 Active Storage，實作個人資料、技能、專案、閱讀筆記及圖片管理功能，並支援全站深色模式切換。
 
 <img width="1920" height="1080" alt="01-bamu-portfolio-hom" src="https://github.com/user-attachments/assets/08ec4dd8-e759-436c-bc06-1fcb1bf76395" />
 
@@ -24,6 +24,7 @@
 * 專案圖片展示
 * 專案相關技術技能呈現
 * 響應式網頁設計
+* 全站 Dark Mode 深色模式切換
 
 ### Admin Dashboard（後台）
 
@@ -40,6 +41,15 @@
 * 使用 Active Storage 管理專案圖片
 * 支援多張圖片上傳
 * 管理後台圖片預覽與刪除
+
+### Reading Blog（閱讀筆記）
+
+* 閱讀筆記列表與詳細頁面
+* 書籍搜尋功能
+* Featured Readings 精選書籍展示
+* 閱讀筆記 CRUD
+* 多張圖片上傳與管理
+* 閱讀資料備份與還原
 
 ## Tech Stack
 
@@ -62,6 +72,7 @@
 * `Project`：作品專案與圖片
 * `ProjectSkill`：專案與技能的關聯
 * `Link`：專案相關連結
+* `Reading`：閱讀筆記內容與書籍圖片
 
 透過 Rails Active Record associations 管理模型之間的關聯，並使用 RESTful routes 與 Strong Parameters 處理後台資料操作。
 
@@ -82,6 +93,18 @@
 ### Project Images
 
 使用 Active Storage 管理專案多圖片上傳，並建立 ProjectImage 模型管理圖片說明與排序，支援後台圖片預覽及刪除。
+
+### Reading Blog
+
+擴充 Rails Portfolio，建立閱讀筆記系統，包含書籍搜尋、精選書籍展示與詳細頁面。
+
+透過 Admin 後台管理閱讀筆記，使用 Active Storage 支援多張圖片上傳、預覽與刪除，並提供資料備份與還原功能。
+
+### Dark Mode
+
+使用 Tailwind CSS 的 `dark:` 變體與 Stimulus 實作全站深色模式切換，並透過 Local Storage 保存使用者的主題偏好。
+
+針對 Portfolio 與 Reading Blog 分別設計深色配色，維持一致的介面風格與閱讀體驗。
 
 ## Screenshots
 
@@ -120,6 +143,28 @@ Contact Information
   
 <img width="1920" height="1080" alt="08-bamu-portfolio-admin-skill-drag" src="https://github.com/user-attachments/assets/2da9ab67-13db-4113-b0dc-b37a8c596b60" />
 
+### Reading Blog
+
+Reading Blog Index
+
+![Reading Blog Index](app/assets/images/screenshots/01-reading-blog-index.png)
+
+Reading Details
+
+![Reading Details](app/assets/images/screenshots/02-reading-blog-details.png)
+
+Reading Search
+
+![Reading Search](app/assets/images/screenshots/03-reading-blog-search.png)
+
+Reading Management
+
+![Reading Management](app/assets/images/screenshots/04-reading-blog-management.png)
+
+Reading Blog Dark Mode
+
+![Reading Blog Dark Mode](app/assets/images/screenshots/05-reading-blog-dark-mode.png)
+
 </details>
 
 ## Local Development
@@ -141,6 +186,7 @@ bundle install
 
 bin/rails db:create
 bin/rails db:migrate
+bin/rails db:seed
 ```
 
 ### Start Server
