@@ -214,6 +214,8 @@ readings_data.each do |data|
   reading.read_at = data["read_at"]
   reading.save!
 
+  reading.images.purge
+
   data["images"].to_a.each do |image_path|
     image_file = reading_notes_dir.join(image_path)
 
