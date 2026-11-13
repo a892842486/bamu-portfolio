@@ -31,6 +31,7 @@ skill_names = [
   "Ruby",
   "Ruby on Rails",
   "JavaScript",
+  "Python",
   "Tailwind CSS",
   "PostgreSQL",
   "Devise",
@@ -122,6 +123,23 @@ projects_data = [
     "Reading Search",
     "Reading Management",
     "Reading Blog Dark Mode"
+  ]
+},
+{
+  name: "Video Downloader",
+  summary: "使用 Chrome Extension 與 Python 開發的網頁影片下載工具，支援影片偵測、多任務下載與進度管理。",
+  description: <<~TEXT,
+    使用 Chrome Extension Manifest V3 開發瀏覽器影片下載工具。
+    透過 Chrome Native Messaging 與 Python 通訊，整合 yt-dlp 和 FFmpeg 執行影片下載及影音合併。
+    支援網頁影片偵測、下載進度顯示、多任務管理、取消下載及下載紀錄管理。
+  TEXT
+  github: "https://github.com/a892842486/video-downloader",
+  skills: [
+    "JavaScript", "Python"
+  ],
+  image_prefix: "video-downloader",
+  captions: [
+    "Video Downloader Overview"
   ]
 }
 ]
